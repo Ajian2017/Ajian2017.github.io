@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CentOS 7 安装Python3、pip3 | Flow sand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CentOS 7 默认安装了 Python 2，当需要使用 Python 3 的时候，可以手动下载 Python 源码后编译安装。 一、安装 Python 31.1 安装准备$ sudo mkdir &#x2F;usr&#x2F;local&#x2F;python3 # 创建安装目录  # 下载 Python 源文件 $ wget --no-check-certificate https:&#x2F;&#x2F;www.python.org&#x2F;ft">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS 7 安装Python3、pip3">
+<meta property="og:url" content="http://yoursite.com/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/index.html">
+<meta property="og:site_name" content="Flow sand">
+<meta property="og:description" content="CentOS 7 默认安装了 Python 2，当需要使用 Python 3 的时候，可以手动下载 Python 源码后编译安装。 一、安装 Python 31.1 安装准备$ sudo mkdir &#x2F;usr&#x2F;local&#x2F;python3 # 创建安装目录  # 下载 Python 源文件 $ wget --no-check-certificate https:&#x2F;&#x2F;www.python.org&#x2F;ft">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-27T22:34:12.000Z">
+<meta property="article:modified_time" content="2019-12-29T08:02:49.778Z">
+<meta property="article:author" content="ajian">
+<meta property="article:tag" content="tools">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Flow sand" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Flow sand</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CentOS 7 安装Python3 pip3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/" class="article-date">
+  <time datetime="2019-12-27T22:34:12.000Z" itemprop="datePublished">2019-12-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOS 7 安装Python3、pip3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CentOS 7 默认安装了 Python 2，当需要使用 Python 3 的时候，可以手动下载 Python 源码后编译安装。</p>
+<h2 id="一、安装-Python-3"><a href="#一、安装-Python-3" class="headerlink" title="一、安装 Python 3"></a>一、安装 Python 3</h2><h3 id="1-1-安装准备"><a href="#1-1-安装准备" class="headerlink" title="1.1 安装准备"></a>1.1 安装准备</h3><pre><code>$ sudo mkdir /usr/local/python3 # 创建安装目录
+
+# 下载 Python 源文件
+$ wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+# 注意：wget获取https的时候要加上：--no-check-certificate
+
+$ tar -xzvf Python-3.6.0.tgz # 解压缩包
+
+$ cd Python-3.6.0 # 进入解压目录</code></pre><h3 id="1-2-编译安装"><a href="#1-2-编译安装" class="headerlink" title="1.2 编译安装"></a>1.2 编译安装</h3><pre><code>$ sudo ./configure --prefix=/usr/local/python3 # 指定创建的目录
+
+$ sudo make
+
+$ sudo make install</code></pre><h2 id="1-3-配置"><a href="#1-3-配置" class="headerlink" title="1.3 配置"></a>1.3 配置</h2><h3 id="1-3-1-两个版本共存"><a href="#1-3-1-两个版本共存" class="headerlink" title="1.3.1 两个版本共存"></a>1.3.1 两个版本共存</h3><p>创建 python3 的软链接：</p>
+<pre><code>$ sudo ln -s /usr/local/python3/bin/python3 /usr/bin/python3</code></pre><p>这样默认的 Python 版本就替换为 Python 3 了。</p>
+<p>因为 yum 使用 Python 2，因此替换为 Python 3 后可能无法正常工作，因此修改 yum 配置文件</p>
+<pre><code>$ sudo vi /usr/bin/yum</code></pre><p>将第一行指定的 python 版本改为 python2.7（#!/usr/bin/python 改为 #!/usr/bin/python2.7）</p>
+<h2 id="二、安装-pip"><a href="#二、安装-pip" class="headerlink" title="二、安装 pip"></a>二、安装 pip</h2><h3 id="2-1-yum-安装"><a href="#2-1-yum-安装" class="headerlink" title="2.1 yum 安装"></a>2.1 yum 安装</h3><pre><code># 首先安装 epel 扩展源
+$ sudo yum -y install epel-release
+
+# 安装 python-pip
+$ sudo yum -y install python-pip
+
+# 清除 cache
+$ sudo yum clean all</code></pre><p>通过这种方式貌似只能安装 pip2，想要安装 Python 3 的 pip，可以通过以下的源代码安装方式。</p>
+<h2 id="2-2-源码安装"><a href="#2-2-源码安装" class="headerlink" title="2.2 源码安装"></a>2.2 源码安装</h2><pre><code># 下载源代码
+$ wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz
+
+$ tar -zvxf 9.0.1 -C pip-9.0.1    # 解压文件
+
+$ cd pip-9.0.1
+
+# 使用 Python 3 安装
+$ python3 setup.py install</code></pre><p>创建链接：</p>
+<pre><code>$ sudo ln -s /usr/local/python3/bin/pip /usr/bin/pip3</code></pre><h3 id="2-3-升级-pip"><a href="#2-3-升级-pip" class="headerlink" title="2.3 升级 pip"></a>2.3 升级 pip</h3><pre><code>$ pip install --upgrade pip</code></pre><p>备注：安装好Python3 之后，不仅需要改/usr/bin/yum的第一行，也需要将 /usr/libexec/urlgrabber-ext-down 的第一行修改为 #! /usr/bin/python2</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/" data-id="ck4qxmfk60000mq9ka8jbemrd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/12/28/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/leetcode/" style="font-size: 10px;">leetcode</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/29/AppleSign/">苹果双向签名原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/29/Https/">Https handshake</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/29/leetcode-contest/">16场双周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/28/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/">CentOS 7 安装Python3、pip3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 ajian<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
