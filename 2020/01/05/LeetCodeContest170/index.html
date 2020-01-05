@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>170场周赛 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="5304. 子数组异或查询有一个正整数数组 arr，现给你一个对应的查询数组 queries，其中 queries[i] &#x3D; [Li, Ri]。 对于每个查询 i，请你计算从 Li 到 Ri 的 XOR 值（即 arr[Li] xor arr[Li+1] xor … xor arr[Ri]）作为本次查询的结果。 并返回一个包含给定查询 queries 所有结果的数组。 示例 1:输入：arr &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="170场周赛">
+<meta property="og:url" content="http://yoursite.com/2020/01/05/LeetCodeContest170/index.html">
+<meta property="og:site_name" content="">
+<meta property="og:description" content="5304. 子数组异或查询有一个正整数数组 arr，现给你一个对应的查询数组 queries，其中 queries[i] &#x3D; [Li, Ri]。 对于每个查询 i，请你计算从 Li 到 Ri 的 XOR 值（即 arr[Li] xor arr[Li+1] xor … xor arr[Ri]）作为本次查询的结果。 并返回一个包含给定查询 queries 所有结果的数组。 示例 1:输入：arr &#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-05T05:17:12.000Z">
+<meta property="article:modified_time" content="2020-01-05T05:58:08.611Z">
+<meta property="article:author" content="ajian">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="swift">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LeetCodeContest170" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/05/LeetCodeContest170/" class="article-date">
+  <time datetime="2020-01-05T05:17:12.000Z" itemprop="datePublished">2020-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      170场周赛
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="5304-子数组异或查询"><a href="#5304-子数组异或查询" class="headerlink" title="5304. 子数组异或查询"></a>5304. 子数组异或查询</h2><p>有一个正整数数组 arr，现给你一个对应的查询数组 queries，其中 queries[i] = [Li, Ri]。</p>
+<p>对于每个查询 i，请你计算从 Li 到 Ri 的 XOR 值（即 arr[Li] xor arr[Li+1] xor … xor arr[Ri]）作为本次查询的结果。</p>
+<p>并返回一个包含给定查询 queries 所有结果的数组。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p>输入：arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]<br>输出：[2,7,14,8]<br>解释：<br>数组中元素的二进制表示形式是：<br>1 = 0001<br>3 = 0011<br>4 = 0100<br>8 = 1000<br>查询的 XOR 值为：<br>[0,1] = 1 xor 3 = 2<br>[1,2] = 3 xor 4 = 7<br>[0,3] = 1 xor 3 xor 4 xor 8 = 14<br>[3,3] = 8</p>
+<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p>输入：arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]<br>输出：[8,0,4,4]</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">xorQueries</span><span class="params">(<span class="number">_</span> arr: [Int], <span class="number">_</span> queries: [[Int]])</span></span> -&gt; [<span class="type">Int</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> preXor = [<span class="type">Int</span>](repeating: <span class="number">0</span>, <span class="built_in">count</span>: arr.<span class="built_in">count</span>+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;arr.<span class="built_in">count</span> &#123;</span><br><span class="line">        preXor[i+<span class="number">1</span>] = arr[i] ^ preXor[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ans = [<span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> q <span class="keyword">in</span> queries &#123;</span><br><span class="line">        <span class="keyword">let</span> l = q[<span class="number">0</span>], r = q[<span class="number">1</span>]+<span class="number">1</span></span><br><span class="line">        ans.append(preXor[l]^preXor[r])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5305-获取你好友已观看的视频"><a href="#5305-获取你好友已观看的视频" class="headerlink" title="5305. 获取你好友已观看的视频"></a>5305. 获取你好友已观看的视频</h2><p>有 n 个人，每个人都有一个  0 到 n-1 的唯一 id 。</p>
+<p>给你数组 watchedVideos  和 friends ，其中 watchedVideos[i]  和 friends[i] 分别表示 id = i 的人观看过的视频列表和他的好友列表。</p>
+<p>Level 1 的视频包含所有你好友观看过的视频，level 2 的视频包含所有你好友的好友观看过的视频，以此类推。一般的，Level 为 k 的视频包含所有从你出发，最短距离为 k 的好友观看过的视频。</p>
+<p>给定你的 id  和一个 level 值，请你找出所有指定 level 的视频，并将它们按观看频率升序返回。如果有频率相同的视频，请将它们按名字字典序从小到大排列。</p>
+<h5 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1"></a>示例 1</h5><p>输入：watchedVideos = [[“A”,”B”],[“C”],[“B”,”C”],[“D”]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 1<br>输出：[“B”,”C”]<br>解释：<br>你的 id 为 0 ，你的朋友包括：<br>id 为 1 -&gt; watchedVideos = [“C”]<br>id 为 2 -&gt; watchedVideos = [“B”,”C”]<br>你朋友观看过视频的频率为：<br>B -&gt; 1<br>C -&gt; 2</p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><p>输入：watchedVideos = [[“A”,”B”],[“C”],[“B”,”C”],[“D”]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 2<br>输出：[“D”]<br>解释：<br>你的 id 为 0 ，你朋友的朋友只有一个人，他的 id 为 3 。</p>
+<ul>
+<li>提示：<ul>
+<li>n == watchedVideos.length == friends.length</li>
+<li>2 &lt;= n &lt;= 100</li>
+<li>1 &lt;= watchedVideos[i].length &lt;= 100</li>
+<li>1 &lt;= watchedVideos[i][j].length &lt;= 8</li>
+<li>0 &lt;= friends[i].length &lt; n</li>
+<li>0 &lt;= friends[i][j] &lt; n</li>
+<li>0 &lt;= id &lt; n</li>
+<li>1 &lt;= level &lt; n</li>
+<li>如果 friends[i] 包含 j ，那么 friends[j] 包含 i</li>
+</ul>
+</li>
+</ul>
+<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">watchedVideosByFriends</span><span class="params">(<span class="number">_</span> watchedVideos: [[String]], <span class="number">_</span> friends: [[Int]], <span class="number">_</span> id: Int, <span class="number">_</span> level: Int)</span></span> -&gt; [<span class="type">String</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> seen = <span class="type">Set</span>&lt;<span class="type">Int</span>&gt;([id])</span><br><span class="line">    <span class="keyword">var</span> queue = [(id, <span class="number">0</span>)]</span><br><span class="line">    <span class="keyword">var</span> dstFriends = <span class="type">Set</span>&lt;<span class="type">Int</span>&gt;()</span><br><span class="line">    <span class="keyword">while</span> !queue.isEmpty &#123;</span><br><span class="line">        <span class="keyword">let</span> (node, d) = queue.removeFirst()</span><br><span class="line">        <span class="keyword">if</span> d &gt; level &#123; <span class="keyword">break</span> &#125;</span><br><span class="line">        <span class="keyword">if</span> d == level &#123;dstFriends.insert(node) &#125;</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> friends[node] <span class="keyword">where</span> !seen.<span class="built_in">contains</span>(nei) &#123;</span><br><span class="line">            seen.insert(nei)</span><br><span class="line">            queue.append((nei, d+<span class="number">1</span>))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> dic = [<span class="type">String</span>: <span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> dstFriends &#123;</span><br><span class="line">        <span class="keyword">for</span> video <span class="keyword">in</span> watchedVideos[node] &#123;</span><br><span class="line">            dic[video, <span class="keyword">default</span>: <span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> videos = <span class="type">Array</span>(dic.keys)</span><br><span class="line">    <span class="keyword">return</span> videos.sorted &#123;</span><br><span class="line">        <span class="keyword">if</span> dic[$<span class="number">0</span>]! == dic[$<span class="number">1</span>]! &#123;</span><br><span class="line">            <span class="keyword">return</span> $<span class="number">0</span> &lt; $<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dic[$<span class="number">0</span>]! &lt; dic[$<span class="number">1</span>]!</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ck50lw2v30002f89kczaqbfdn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/29/AppleSign/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">苹果双向签名原理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+    
+      
+
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/swift/" style="font-size: 20px;">swift</a> <a href="/tags/tools/" style="font-size: 10px;">tools</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/01/05/LeetCodeContest170/">170场周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/29/AppleSign/">苹果双向签名原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/29/Https/">Https handshake</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/29/leetcode-contest/">16场双周赛</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/28/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 
+    src="https://music.163.com/outchain/player?type=2&id=1993765&auto=1&height=66">
+    </iframe>
+  </aside>
+  
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 ajian<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
