@@ -64,6 +64,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-LeetCodeContest173" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/26/LeetCodeContest173/" class="article-date">
+  <time datetime="2020-01-26T06:04:59.000Z" itemprop="datePublished">2020-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/26/LeetCodeContest173/">173场周赛</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="5321-阈值距离内邻居最少的城市"><a href="#5321-阈值距离内邻居最少的城市" class="headerlink" title="5321. 阈值距离内邻居最少的城市"></a>5321. 阈值距离内邻居最少的城市</h2><p>有 n 个城市，按从 0 到 n-1 编号。给你一个边数组 edges，其中 edges[i] = [fromi, toi, weighti] 代表 fromi 和 toi 两个城市之间的双向加权边，距离阈值是一个整数 distanceThreshold。</p>
+<p>返回能通过某些路径到达其他城市数目最少、且路径距离 最大 为 distanceThreshold 的城市。如果有多个这样的城市，则返回编号最大的城市。</p>
+<p>注意，连接城市 i 和 j 的路径的距离等于沿该路径的所有边的权重之和。</p>
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/find_the_city_01.png" alt=""></p>
+<p><code>输入</code>：n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4<br><code>输出</code>：3<br><code>解释</code>：城市分布图如上。<br>每个城市阈值距离 distanceThreshold = 4 内的邻居城市分别是：<br>城市 0 -&gt; [城市 1, 城市 2]<br>城市 1 -&gt; [城市 0, 城市 2, 城市 3]<br>城市 2 -&gt; [城市 0, 城市 1, 城市 3]<br>城市 3 -&gt; [城市 1, 城市 2]<br>城市 0 和 3 在阈值距离 4 以内都有 2 个邻居城市，但是我们必须返回城市 3，因为它的编号最大。</p>
+<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><img src="/images/find_the_city_02.png" alt=""></p>
+<p><code>输入</code>：n = 5, edges = [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], distanceThreshold = 2<br><code>输出</code>：0<br><code>解释</code>：城市分布图如上。</p>
+<p>每个城市阈值距离 distanceThreshold = 2 内的邻居城市分别是：<br>城市 0 -&gt; [城市 1]<br>城市 1 -&gt; [城市 0, 城市 4]<br>城市 2 -&gt; [城市 3, 城市 4]<br>城市 3 -&gt; [城市 2, 城市 4]<br>城市 4 -&gt; [城市 1, 城市 2, 城市 3]<br>城市 0 在阈值距离 4 以内只有 1 个邻居城市。</p>
+<p><code>提示</code>：</p>
+<ul>
+<li>2 &lt;= n &lt;= 100</li>
+<li>1 &lt;= edges.length &lt;= n * (n - 1) / 2</li>
+<li>edges[i].length == 3</li>
+<li>0 &lt;= fromi &lt; toi &lt; n</li>
+<li>1 &lt;= weighti, distanceThreshold &lt;= 10^4</li>
+<li>所有 (fromi, toi) 都是不同的。</li>
+</ul>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findTheCity</span><span class="params">(<span class="number">_</span> n: Int, <span class="number">_</span> edges: [[Int]], <span class="number">_</span> distanceThreshold: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> dis = [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: <span class="type">Int</span>.<span class="built_in">max</span>&gt;&gt;<span class="number">2</span>, <span class="built_in">count</span>: n+<span class="number">1</span>), <span class="built_in">count</span>: n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> edges &#123;</span><br><span class="line">        dis[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = e[<span class="number">2</span>]</span><br><span class="line">        dis[e[<span class="number">1</span>]][e[<span class="number">0</span>]] = e[<span class="number">2</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        dis[i][i] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">                dis[i][j] = <span class="built_in">min</span>(dis[i][j], dis[i][k]+dis[k][j])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> mv = n+<span class="number">1</span></span><br><span class="line">    <span class="keyword">var</span> ans = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">stride</span>(from: n-<span class="number">1</span>, to: -<span class="number">1</span>, by: -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> ct = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;n <span class="keyword">where</span> dis[i][j] &lt;= distanceThreshold &#123;</span><br><span class="line">            ct += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ct &lt; mv &#123;</span><br><span class="line">            mv = ct</span><br><span class="line">            ans = i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5322-工作计划的最低难度"><a href="#5322-工作计划的最低难度" class="headerlink" title="5322. 工作计划的最低难度"></a>5322. 工作计划的最低难度</h2><p>你需要制定一份 d 天的工作计划表。工作之间存在依赖，要想执行第 i 项工作，你必须完成全部 j 项工作（ 0 &lt;= j &lt; i）。</p>
+<p>你每天 至少 需要完成一项任务。工作计划的总难度是这 d 天每一天的难度之和，而一天的工作难度是当天应该完成工作的最大难度。</p>
+<p>给你一个整数数组 jobDifficulty 和一个整数 d，分别代表工作难度和需要计划的天数。第 i 项工作的难度是 jobDifficulty[i]。</p>
+<p>返回整个工作计划的 最小难度 。如果无法制定工作计划，则返回 -1 。</p>
+<h5 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/lc_173.png" alt=""></p>
+<p><code>输入</code>：jobDifficulty = [6,5,4,3,2,1], d = 2<br><code>输出</code>：7<br><code>解释</code>：第一天，您可以完成前 5 项工作，总难度 = 6. 第二天，您可以完成最后一项工作，总难度 = 1. 计划表的难度 = 6 + 1 = 7 </p>
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p><code>输入</code>：jobDifficulty = [9,9,9], d = 4<br><code>输出</code>：-1<br><code>解释</code>：就算你每天完成一项工作，仍然有一天是空闲的，你无法制定一份能够满足既定工作时间的计划表。</p>
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h5><p><code>输入</code>：jobDifficulty = [7,1,7,1,7,1], d = 3<br><code>输出</code>：15</p>
+<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDifficulty</span><span class="params">(<span class="number">_</span> jobDifficulty: [Int], <span class="number">_</span> d: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> n = jobDifficulty.<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">if</span> d &gt; n &#123; <span class="keyword">return</span> -<span class="number">1</span> &#125;</span><br><span class="line">    <span class="comment">// dp[i][j] = min diff for doing first i jobs in j days?</span></span><br><span class="line">    <span class="keyword">let</span> <span class="type">INF</span> = <span class="number">1000_000_009</span></span><br><span class="line">    <span class="keyword">var</span> dp = [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: <span class="type">INF</span>, <span class="built_in">count</span>: d+<span class="number">1</span>), <span class="built_in">count</span>: n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        <span class="keyword">var</span> diff = jobDifficulty[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">stride</span>(from: i, to: -<span class="number">1</span>, by: -<span class="number">1</span>) &#123;</span><br><span class="line">            diff = <span class="built_in">max</span>(diff, jobDifficulty[j])</span><br><span class="line">            <span class="keyword">if</span> j == <span class="number">0</span> &#123;</span><br><span class="line">                dp[i][<span class="number">1</span>] = diff</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">2</span>..&lt;d+<span class="number">1</span> &#123;</span><br><span class="line">                    dp[i][k] = <span class="built_in">min</span>(dp[i][k], diff+dp[j-<span class="number">1</span>][k-<span class="number">1</span>])</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n - <span class="number">1</span>][d]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ck5umy2n6000alb9k73vm9qdl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-LeetCodeContest172" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/01/19/LeetCodeContest172/" class="article-date">
@@ -106,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ck5l1tgas00056u9k4ngnf9bc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ck5umy2n40009lb9keueu8rke" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -152,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ck5l1tgb600096u9k0tgr6r3r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ck5umy2mz0004lb9kfwj4adrz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -221,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ck5l1tgad00046u9kdpn99aep" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ck5umy2n10005lb9kgk0n0klo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -270,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ck5l1tgaa00036u9k1qb61gjd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ck5umy2mu0002lb9k32357xhk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -351,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ck5l1tg9x00016u9k5jtaa7ls" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ck5umy2ma0000lb9k8211ezme" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/" rel="tag">https</a></li></ul>
@@ -414,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ck5l1tgb9000b6u9k64d20ylh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ck5umy2n8000clb9k5q1ndi4o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -534,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/28/hello-world/" data-id="ck5l1tgax00086u9k9zyf1uv1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/28/hello-world/" data-id="ck5umy2nb000elb9k3bm9eh91" class="article-share-link">Share</a>
       
       
     </footer>
@@ -605,7 +670,7 @@ $ python3 setup.py install</code></pre><p>创建链接：</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/" data-id="ck5l1tg9400006u9k10vqcohm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/28/CentOS%207%20%E5%AE%89%E8%A3%85Python3%20pip3/" data-id="ck5umy2n20006lb9kf7prdzbd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
@@ -630,7 +695,7 @@ $ python3 setup.py install</code></pre><p>创建链接：</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -649,7 +714,7 @@ $ python3 setup.py install</code></pre><p>创建链接：</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -660,6 +725,10 @@ $ python3 setup.py install</code></pre><p>创建链接：</p>
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/01/26/LeetCodeContest173/">173场周赛</a>
+          </li>
         
           <li>
             <a href="/2020/01/19/LeetCodeContest172/">172场周赛</a>
@@ -675,10 +744,6 @@ $ python3 setup.py install</code></pre><p>创建链接：</p>
         
           <li>
             <a href="/2019/12/29/AppleSign/">苹果双向签名原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/29/Https/">Https handshake</a>
           </li>
         
       </ul>
