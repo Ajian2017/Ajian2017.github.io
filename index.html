@@ -86,16 +86,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="show-the-entitlement-in-mach-0-file"><a href="#show-the-entitlement-in-mach-0-file" class="headerlink" title="show the entitlement in mach-0 file"></a>show the entitlement in mach-0 file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O path&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="show-valid-codesign-certificate-in-mac"><a href="#show-valid-codesign-certificate-in-mac" class="headerlink" title="show valid codesign certificate in mac"></a>show valid codesign certificate in mac</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security find-identity -v -p codesigning</span><br></pre></td></tr></table></figure>
+        <h3 id="显示Mach-O文件中的entitlement"><a href="#显示Mach-O文件中的entitlement" class="headerlink" title="显示Mach-O文件中的entitlement"></a>显示Mach-O文件中的entitlement</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查看当前安装的证书"><a href="#查看当前安装的证书" class="headerlink" title="查看当前安装的证书"></a>查看当前安装的证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security find-identity -v -p codesigning</span><br></pre></td></tr></table></figure>
 
-<h3 id="codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app"><a href="#codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app" class="headerlink" title="codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app"></a>codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查看权限文件"><a href="#查看权限文件" class="headerlink" title="查看权限文件"></a>查看权限文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security cms -D -i xxx.app/embedded.mobileprovision</span><br></pre></td></tr></table></figure>
 
-<h3 id="check-if-the-signature-is-legal"><a href="#check-if-the-signature-is-legal" class="headerlink" title="check if the signature is legal"></a>check if the signature is legal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="制作plist文件"><a href="#制作plist文件" class="headerlink" title="制作plist文件"></a>制作plist文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security cms -D -i embedded.mobileprovision &gt; profile.plist</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取描述文件中的某一字段"><a href="#获取描述文件中的某一字段" class="headerlink" title="获取描述文件中的某一字段"></a>获取描述文件中的某一字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/libexec/PlistBuddy -x -c <span class="string">'Print:Entitlements'</span>  profile.plist &gt; Entitlements.plist</span><br></pre></td></tr></table></figure>
+
+<h3 id="强制替换签名"><a href="#强制替换签名" class="headerlink" title="强制替换签名"></a>强制替换签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict &#123;xxx.app｜Framework path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用Entitlements-plist对xxx-app签名"><a href="#使用Entitlements-plist对xxx-app签名" class="headerlink" title="使用Entitlements.plist对xxx.app签名"></a>使用Entitlements.plist对xxx.app签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict --entitlements=Entitlements.plist &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="检测xxx-app签名是否合法"><a href="#检测xxx-app签名是否合法" class="headerlink" title="检测xxx.app签名是否合法"></a>检测xxx.app签名是否合法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将信息重新保存到xxx-txt"><a href="#将信息重新保存到xxx-txt" class="headerlink" title="将信息重新保存到xxx.txt"></a>将信息重新保存到xxx.txt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ otool -l xxx.app/xxx &gt; xxx.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="检测xxx-app签名是否合法-1"><a href="#检测xxx-app签名是否合法-1" class="headerlink" title="检测xxx.app签名是否合法"></a>检测xxx.app签名是否合法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="筛选出可执行文件的加密情况"><a href="#筛选出可执行文件的加密情况" class="headerlink" title="筛选出可执行文件的加密情况"></a>筛选出可执行文件的加密情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ otool -l xxx.app/xxx | grep cry</span><br></pre></td></tr></table></figure>
+
+
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckivvlw9h000kdtjbdtui10fe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckivwdzkl0015ksjbbzi7f8l3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -152,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckivvlw9a000gdtjbh48gagmo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckivwdzji000fksjba3w343pa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -200,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckivvlw830000dtjb49nff1pv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckivwdzj30003ksjb6ij5cn0s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -265,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckivvlw9m000odtjbbqcs9u45" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckivwdzje000bksjb3p3g8sbb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -319,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckivvlw99000fdtjb7h7h7jbj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckivwdzj50005ksjb67wwef07" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -365,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckivvlw9k000mdtjb843q07mf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckivwdzja0009ksjbgfmbfwnr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -434,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckivvlw9d000idtjb5dct0jt9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckivwdzj80008ksjb2n75a03e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -483,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckivvlw94000bdtjbg20p4hu6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckivwdzix0001ksjb9lrybi2v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -564,7 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckivvlw8g0003dtjba1gt11we" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckivwdzj40004ksjb8koh6xaz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/" rel="tag">https</a></li></ul>
@@ -627,7 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ckivvlw9p000qdtjb3md76c4q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ckivwdzjk000gksjb4p8p7jzi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
