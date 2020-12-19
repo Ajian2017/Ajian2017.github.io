@@ -7,15 +7,15 @@
   
   <title>一些iOS常用命令 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="show the entitlement in mach-0 file1$ codesign -d --entitlement :- &amp;#123;mach-O filepath&amp;#125;">
+  <meta name="description" content="show the entitlement in mach-0 file1$ codesign -d --entitlement :- &amp;#123;mach-O path&amp;#125; show valid codesign certificate in mac1$ security find-identity -v -p codesigning  codesign the xxx.app direc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些iOS常用命令">
 <meta property="og:url" content="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="show the entitlement in mach-0 file1$ codesign -d --entitlement :- &amp;#123;mach-O filepath&amp;#125;">
+<meta property="og:description" content="show the entitlement in mach-0 file1$ codesign -d --entitlement :- &amp;#123;mach-O path&amp;#125; show valid codesign certificate in mac1$ security find-identity -v -p codesigning  codesign the xxx.app direc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-19T03:39:52.000Z">
-<meta property="article:modified_time" content="2020-12-19T03:46:21.524Z">
+<meta property="article:modified_time" content="2020-12-19T15:48:10.247Z">
 <meta property="article:author" content="ajian">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
@@ -89,11 +89,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="show-the-entitlement-in-mach-0-file"><a href="#show-the-entitlement-in-mach-0-file" class="headerlink" title="show the entitlement in mach-0 file"></a>show the entitlement in mach-0 file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O filepath&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="show-the-entitlement-in-mach-0-file"><a href="#show-the-entitlement-in-mach-0-file" class="headerlink" title="show the entitlement in mach-0 file"></a>show the entitlement in mach-0 file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="show-valid-codesign-certificate-in-mac"><a href="#show-valid-codesign-certificate-in-mac" class="headerlink" title="show valid codesign certificate in mac"></a>show valid codesign certificate in mac</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security find-identity -v -p codesigning</span><br></pre></td></tr></table></figure>
+
+<h3 id="codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app"><a href="#codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app" class="headerlink" title="codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app"></a>codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="check-if-the-signature-is-legal"><a href="#check-if-the-signature-is-legal" class="headerlink" title="check if the signature is legal"></a>check if the signature is legal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckiv5wob3000fkrjb4hjb78jm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckivvlw9h000kdtjbdtui10fe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>

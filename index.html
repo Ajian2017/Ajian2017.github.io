@@ -86,11 +86,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="show-the-entitlement-in-mach-0-file"><a href="#show-the-entitlement-in-mach-0-file" class="headerlink" title="show the entitlement in mach-0 file"></a>show the entitlement in mach-0 file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O filepath&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="show-the-entitlement-in-mach-0-file"><a href="#show-the-entitlement-in-mach-0-file" class="headerlink" title="show the entitlement in mach-0 file"></a>show the entitlement in mach-0 file</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O path&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="show-valid-codesign-certificate-in-mac"><a href="#show-valid-codesign-certificate-in-mac" class="headerlink" title="show valid codesign certificate in mac"></a>show valid codesign certificate in mac</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security find-identity -v -p codesigning</span><br></pre></td></tr></table></figure>
+
+<h3 id="codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app"><a href="#codesign-the-xxx-app-directory-frameworks-won’t-be-automatically-signed-，-f-means-mandatory-resignature-app" class="headerlink" title="codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app"></a>codesign the xxx.app directory (frameworks won’t be automatically signed)， -f means mandatory resignature app</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="check-if-the-signature-is-legal"><a href="#check-if-the-signature-is-legal" class="headerlink" title="check if the signature is legal"></a>check if the signature is legal</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckiv5wob3000fkrjb4hjb78jm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckivvlw9h000kdtjbdtui10fe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -147,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckiv5wob7000gkrjb8ig8g5g5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckivvlw9a000gdtjbh48gagmo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -195,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckiv5woaq000bkrjbefov4mjs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckivvlw830000dtjb49nff1pv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -260,7 +265,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckiv5woau000ckrjb3dmp07df" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckivvlw9m000odtjbbqcs9u45" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -314,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckiv5wobm000kkrjb9if4a0ki" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckivvlw99000fdtjb7h7h7jbj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -360,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckiv5woaj0008krjbghxydaam" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckivvlw9k000mdtjb843q07mf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -429,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckiv5woao000akrjb4ekx1z0k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckivvlw9d000idtjb5dct0jt9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -478,7 +483,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckiv5woab0006krjbf9lyeps8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckivvlw94000bdtjbg20p4hu6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -559,7 +564,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckiv5wo8t0001krjbcbi2djj4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckivvlw8g0003dtjba1gt11we" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/" rel="tag">https</a></li></ul>
@@ -622,7 +627,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ckiv5wobs000mkrjbhm4u9wyv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/leetcode-contest/" data-id="ckivvlw9p000qdtjb3md76c4q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
