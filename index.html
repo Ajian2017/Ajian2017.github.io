@@ -91,7 +91,7 @@
 
 <h3 id="提取mp3文件中的指定时间音频"><a href="#提取mp3文件中的指定时间音频" class="headerlink" title="提取mp3文件中的指定时间音频"></a>提取mp3文件中的指定时间音频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i mc.mp3 -ss 00:00:00 -to 00:00:30 -acodec copy a2.mp3</span><br><span class="line">$ ffmpeg -i mc.mp3 -ss 00:00:00 -t 30 -acodec copy a3.mp3</span><br></pre></td></tr></table></figure>
 
-<h3 id="合并视频与音频文件-input-mp4中没音频"><a href="#合并视频与音频文件-input-mp4中没音频" class="headerlink" title="合并视频与音频文件(input.mp4中没音频)"></a>合并视频与音频文件(input.mp4中没音频)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i a.m4a -i q1.mp4 -c copy av.mp4</span><br><span class="line">$ ffmpeg -i input.mp4 -i input.mp3 -c:v copy -c:a aac -strict experimental output.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="合并视频与音频文件"><a href="#合并视频与音频文件" class="headerlink" title="合并视频与音频文件"></a>合并视频与音频文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i a.m4a -i q1.mp4 -c copy av.mp4</span><br><span class="line">$ ffmpeg -i input.mp4 -i input.mp3 -c:v copy -c:a aac -strict experimental output.mp4 (input.mp4中没音频)</span><br><span class="line">ffmpeg -i input.mp4 -i input.mp3 -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0  output.mp4(input.mp4中可有音频)</span><br></pre></td></tr></table></figure>
 
 <h3 id="拼接多个视频"><a href="#拼接多个视频" class="headerlink" title="拼接多个视频"></a>拼接多个视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i <span class="string">"concat:input.mp4|input2.mp4"</span> -c copy output.mp4</span><br></pre></td></tr></table></figure>
 
@@ -105,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/03/18/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmf43r4c000i9yjb1uyeh805" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/03/18/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmf49ygb000gj2jb7yk5azqn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
@@ -165,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmf43r44000g9yjbdcg614pc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmf49ygj000nj2jb2np51123" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -222,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckmf43r41000d9yjbhzq65qpb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckmf49yge000ij2jb0xpf59ex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -270,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckmf43r3o00039yjbezir74lc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckmf49yfr0002j2jb29m73ll2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -335,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckmf43r3z000b9yjb98c38nas" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckmf49yg8000cj2jbeaj978vz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -389,7 +389,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckmf43r3x00089yjb1yubh8j4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckmf49yg5000aj2jb6n5ydfgp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -435,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckmf43r3y00099yjb9x7rewmy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckmf49yg30009j2jbfrbwfwob" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -504,7 +504,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckmf43r3s00059yjb0mfmdfou" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckmf49yg10006j2jbf63q30vg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -553,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckmf43r2y00009yjbg4omb55o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckmf49yfg0000j2jbhlls9hji" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -634,7 +634,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckmf43r3r00049yjband6b5c5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckmf49yfx0004j2jb281y4t9c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/" rel="tag">https</a></li></ul>
