@@ -101,13 +101,16 @@
 <h3 id="改变mp3文件的大小"><a href="#改变mp3文件的大小" class="headerlink" title="改变mp3文件的大小"></a>改变mp3文件的大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i input.mp3 -af <span class="string">'volume=0.5'</span> output.mp3</span><br></pre></td></tr></table></figure>
 
 <h3 id="提取mp3文件中的指定时间音频"><a href="#提取mp3文件中的指定时间音频" class="headerlink" title="提取mp3文件中的指定时间音频"></a>提取mp3文件中的指定时间音频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i mc.mp3 -ss 00:00:00 -to 00:00:30 -acodec copy a2.mp3</span><br><span class="line">$ ffmpeg -i mc.mp3 -ss 00:00:00 -t 30 -acodec copy a3.mp3</span><br></pre></td></tr></table></figure>
-<h3 id="提取指定时间的视频"><a href="#提取指定时间的视频" class="headerlink" title="提取指定时间的视频"></a>提取指定时间的视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i input.mp4 -t 00:00:30 -c copy part1.mp4 -ss 00:00:30 -codec copy part2.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="提取指定时间的视频"><a href="#提取指定时间的视频" class="headerlink" title="提取指定时间的视频"></a>提取指定时间的视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i input.mp4 -t 00:00:30 -c copy part1.mp4 -ss 00:00:30 -codec copy part2.mp4</span><br><span class="line">$ ffmpeg -i input.mp4 -ss 00:28:20 -to 00:30:38 -codec copy part.mp4</span><br></pre></td></tr></table></figure>
 
 <h3 id="改变视频文件的分辨率"><a href="#改变视频文件的分辨率" class="headerlink" title="改变视频文件的分辨率"></a>改变视频文件的分辨率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i input.mp4 -filter:v scale=1280:720 -c:a copy output.mp4</span><br><span class="line">$ ffmpeg -i input.mp4 -s 1280x720 -c:a copy output.mp4</span><br></pre></td></tr></table></figure>
 
 <h3 id="合并视频与音频文件"><a href="#合并视频与音频文件" class="headerlink" title="合并视频与音频文件"></a>合并视频与音频文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i a.m4a -i q1.mp4 -c copy av.mp4</span><br><span class="line">$ ffmpeg -i input.mp4 -i input.mp3 -c:v copy -c:a aac -strict experimental output.mp4 (input.mp4中没音频)</span><br><span class="line">$ ffmpeg -i input.mp4 -i input.mp3 -c:v copy -c:a aac -strict experimental -map 0:v:0 -map 1:a:0  output.mp4(input.mp4中可有音频)</span><br></pre></td></tr></table></figure>
 
-<h3 id="拼接多个视频"><a href="#拼接多个视频" class="headerlink" title="拼接多个视频"></a>拼接多个视频</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i <span class="string">"concat:input.mp4|input2.mp4"</span> -c copy output.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="拼接多个视频"><a href="#拼接多个视频" class="headerlink" title="拼接多个视频"></a>拼接多个视频</h3><p>将要合并的文件写入文件join.txt， 如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file /home/genius/videos/video1.mp4</span><br><span class="line">file /home/genius/videos/video2.mp4</span><br></pre></td></tr></table></figure>
+<p>执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -f concat -safe 0 -i join.txt -c copy 3dav.mp4</span><br></pre></td></tr></table></figure>
 
 <h3 id="截取视频指定时间的图像"><a href="#截取视频指定时间的图像" class="headerlink" title="截取视频指定时间的图像"></a>截取视频指定时间的图像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg -i input.mp4 -ss 10 -vframes 1 output.jpg</span><br></pre></td></tr></table></figure>
 
@@ -128,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/03/18/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmhqph4i000gzkjb2q4fh7zm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/03/18/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmhupdwt000g5njbe3kqgkzj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
@@ -188,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmhqph53000lzkjb0afo9mdb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmhupdx6000n5njb256nadoj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -245,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckmhqph4f000dzkjbarefatbj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckmhupdwy000i5njbd38e7s2z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -293,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckmhqph1q0002zkjb7ie8hd7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckmhupdvs00005njbgy6u1v5a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -358,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckmhqph4d000czkjbf3ux68fw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckmhupdwj000b5njb577yh1ea" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -412,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckmhqph2v0009zkjbhqcmeacv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckmhupdwe00095njbczrmfl13" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -458,7 +461,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckmhqph48000azkjb8a0ghffc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckmhupdwb00065njbf8qjd8om" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -527,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckmhqph2p0006zkjb0g2j1xhu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckmhupdwa00055njb5s9r730c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
@@ -576,7 +579,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckmhqph040000zkjbcf399074" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckmhupdwd00085njb8umo930j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -657,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckmhqph2h0005zkjb3m4jd8i2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/12/29/Https/" data-id="ckmhupdw800045njba5py1vbm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/" rel="tag">https</a></li></ul>
