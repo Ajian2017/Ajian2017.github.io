@@ -64,6 +64,592 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Runtime" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/17/Runtime/" class="article-date">
+  <time datetime="2021-07-17T02:23:28.000Z" itemprop="datePublished">2021-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/17/Runtime/">Runtime</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="objc-object"><a href="#objc-object" class="headerlink" title="objc_object"></a>objc_object</h3><p><img src="/images/obj.png" alt=""></p>
+<h3 id="objc-class"><a href="#objc-class" class="headerlink" title="objc_class"></a>objc_class</h3><p><img src="/images/cls.png" alt=""></p>
+<h3 id="isa指针"><a href="#isa指针" class="headerlink" title="isa指针"></a>isa指针</h3><p><img src="/images/isa.png" alt=""><br><img src="/images/isa2.png" alt=""></p>
+<h3 id="cache-t"><a href="#cache-t" class="headerlink" title="cache_t"></a>cache_t</h3><ul>
+<li>用于<strong>快速</strong>查找方法执行函数</li>
+<li>是可<strong>增量扩展</strong>的<strong>哈希表</strong>结构</li>
+<li>是<strong>局部性原理</strong>的最佳应用<br><img src="/images/cache.png" alt=""></li>
+</ul>
+<h3 id="class-data-bits-t"><a href="#class-data-bits-t" class="headerlink" title="class_data_bits_t"></a>class_data_bits_t</h3><ul>
+<li>class_data_bits_t主要是对class_rw_t的封装</li>
+<li>class_rw_t代表了类的读写信息、对class_ro_t的封装</li>
+<li>class_ro_t代表了类的只读信息</li>
+</ul>
+<h3 id="class-rw-t"><a href="#class-rw-t" class="headerlink" title="class_rw_t"></a>class_rw_t</h3><p><img src="/images/clsrw.png" alt=""></p>
+<h3 id="class-ro-t"><a href="#class-ro-t" class="headerlink" title="class_ro_t"></a>class_ro_t</h3><p><img src="/images/clsro.png" alt=""></p>
+<h3 id="method-t"><a href="#method-t" class="headerlink" title="method_t"></a>method_t</h3><p><img src="/images/method.png" alt=""></p>
+<h3 id="Type-Encodings"><a href="#Type-Encodings" class="headerlink" title="Type Encodings"></a>Type Encodings</h3><p><img src="/images/typecoding.png" alt=""></p>
+<h3 id="总体结构"><a href="#总体结构" class="headerlink" title="总体结构"></a>总体结构</h3><p><img src="/images/runtime.png" alt=""></p>
+<h3 id="对象、类对象、元类对象"><a href="#对象、类对象、元类对象" class="headerlink" title="对象、类对象、元类对象"></a>对象、类对象、元类对象</h3><ul>
+<li>类对象存储实例方法列表等信息</li>
+<li>元类对象存储类方法列表等信息<br><img src="/images/runtime2.png" alt=""></li>
+</ul>
+<h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p>obj_msgSend(xxx)<br>obj_msgSendSuper(xxx)<br><img src="/images/msgsend.png" alt=""></p>
+<h3 id="缓存查找"><a href="#缓存查找" class="headerlink" title="缓存查找"></a>缓存查找</h3><p>例： 给定<strong>SEL</strong>, 目标是对应bucket_t中的IMP：<br>cache_key_t 通过f(key)得到bucket_t</p>
+<ul>
+<li>对于<strong>已排序</strong>列表，采用<strong>二分算法</strong>查找对应执行函数</li>
+<li>对于<strong>未排序</strong>列表，采用<strong>一般遍历</strong>查找对应执行函数</li>
+</ul>
+<p>**父类逐级查找<br><img src="/images/find.png" alt=""></p>
+<h3 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h3><p><img src="/images/forward.png" alt=""></p>
+<h3 id="动态方法解析"><a href="#动态方法解析" class="headerlink" title="动态方法解析"></a>动态方法解析</h3><p><strong>@dynamic</strong></p>
+<ul>
+<li>动态运行时语言将函数决议推迟到运行时</li>
+<li>编译时语言在编译期间进行函数决议</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/07/17/Runtime/" data-id="ckr949d5o0000r9jb3cejcfa6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/08/Network/" class="article-date">
+  <time datetime="2021-07-07T17:46:13.000Z" itemprop="datePublished">2021-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/08/Network/">Network</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p><strong>Get和Post的区别</strong><br><img src="/images/http.png" alt=""><br><strong>安全性</strong><br><img src="/images/http1.png" alt=""><br><strong>幂等性</strong><br><img src="/images/http2.png" alt=""><br><strong>可缓存性</strong><br>请求是否可以缓存（get/head）</p>
+<p><strong>连接建立断开流程</strong><br><img src="/images/http3.png" alt=""></p>
+<p><strong>HTTP特点</strong></p>
+<ul>
+<li>无连接（补偿：Http的持久连接）</li>
+<li>无状态 (补偿：Cookie/Session）</li>
+</ul>
+<p><strong>Http的持久连接</strong><br>设置请求头部字段：<br>connection: keep-alive<br>time: 20<br>max: 10 (该连接最多能发送的请求数)</p>
+<p><strong>判断一个请求是否结束</strong></p>
+<ul>
+<li>Content-length: 1024</li>
+<li>chunked, 最后会有一个空的chunked</li>
+</ul>
+<p><strong>Charles抓包原理</strong><br>中间人攻击</p>
+<p><strong>HTTPS连接建立流程</strong><br><img src="/images/http4.png" alt=""><br>会话秘钥 == Random S + Random C + 预主秘钥</p>
+<h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h3><p><strong>UDP</strong><br>无连接<br>面向报文<br><img src="/images/udp.png" alt=""></p>
+<p>功能：</p>
+<ul>
+<li>多端口复用分用<br><img src="/images/udp1.png" alt=""></li>
+<li>差错检测<br><img src="/images/udp2.png" alt=""></li>
+</ul>
+<p><strong>TCP</strong><br>特点：面向连接，可靠传输，面向字节流，流量控制，拥塞控制<br><strong>面向连接</strong><br>三次握手（规避两次握手时超时重传可能建立不必要的连接）<br>四次挥手 （存在半关闭状态）<br><strong>可靠传输</strong></p>
+<ul>
+<li><p>无差错：发生传输错误时候，会超时重传<br><img src="/images/tcp1.png" alt=""></p>
+</li>
+<li><p>确认丢失<br><img src="/images/tcp2.png" alt=""></p>
+</li>
+<li><p>不重复<br><img src="/images/tcp.png" alt=""></p>
+</li>
+<li><p>按序列到达</p>
+</li>
+</ul>
+<p><strong>面向字节流</strong><br><img src="/images/tcp3.png" alt=""></p>
+<p><strong>流量控制</strong><br>滑动窗口协议<br><img src="/images/tcp4.png" alt=""></p>
+<p><strong>拥塞控制</strong><br>慢启动，拥塞避免，快恢复，快重传<br><img src="/images/tcp5.png" alt=""></p>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>域名到IP地址的映射，DNS请求采用UDP数据报，且明文</p>
+<p>查询方式</p>
+<ul>
+<li><p>递归查询<br>client -&gt; 本地DNS -&gt; 根域DNS -&gt; 顶级DNS -&gt; 权限DNS</p>
+</li>
+<li><p>迭代查询<br><img src="/images/dns.png" alt=""></p>
+</li>
+</ul>
+<p><strong>DNS解析常见问题</strong></p>
+<ul>
+<li>DNS劫持问题<br><img src="/images/dns1.png" alt=""></li>
+<li>DNS解析转发问题<br><img src="/images/dns2.png" alt=""></li>
+<li>如何解决DNS劫持<br><img src="/images/dns3.png" alt=""><br><img src="/images/dns4.png" alt=""></li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p><img src="/images/cookie.png" alt=""><br>如何修改cookie?</p>
+<ul>
+<li>新cookie覆盖旧cookie</li>
+<li>覆盖规则：name、path、domin等需要和原cookie一致</li>
+</ul>
+<p>如何删除cookie?</p>
+<ul>
+<li>新cookie覆盖旧cookie</li>
+<li>覆盖规则：name、path、domin等需要和原cookie一致</li>
+<li>设置cookie的<strong>expires=过去的一个时间点</strong>，或者<strong>maxAge=0</strong></li>
+</ul>
+<p>如何保证cookie的安全?</p>
+<ul>
+<li>对cookie进行加密处理</li>
+<li>只在https携带Cookie</li>
+<li>设置Cookie为HttpOnly，防止跨站脚本攻击</li>
+</ul>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>Session也是用来记录用户状态，区分用户的；状态存放在服务端<br>Session和Cookie关系是怎样的？</p>
+<ul>
+<li>session需要依赖于Cookie机制<br><img src="/images/session.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/07/08/Network/" data-id="ckr949d660003r9jb09zedoz1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Runloop" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/01/Runloop/" class="article-date">
+  <time datetime="2021-06-30T16:48:45.000Z" itemprop="datePublished">2021-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/01/Runloop/">Runloop</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是Runloop"><a href="#什么是Runloop" class="headerlink" title="什么是Runloop"></a>什么是Runloop</h3><p>runloop是通过内部维护的<strong>事件循环</strong>来对<strong>事件/消息</strong>进行管理的一个对象</p>
+<ul>
+<li>没有消息需要处理时候，休眠以避免资源占用 (用户态-&gt;内核态）</li>
+<li>有消息需要处理时，立刻被唤醒（内核态-&gt;用户态）<br><img src="/images/runloop.png" alt=""><br><img src="/images/runloop2.png" alt=""><br><img src="/images/runloop3.png" alt=""></li>
+</ul>
+<p><strong>CFRunloopSource</strong></p>
+<ul>
+<li>source0(需要手动唤醒线程)</li>
+<li>source1(具备唤醒线程的能力)</li>
+</ul>
+<p><strong>CFRunloopTimer</strong><br>基于事件的定时器,和NSTimer是toll-free bridged</p>
+<p><strong>CFRunloopObserver</strong><br>观测时间点</p>
+<ul>
+<li>KCFRunLoopEntry</li>
+<li>KCFRunLoopBrforeTimers</li>
+<li>kCFRunLoopBeforsources</li>
+<li>kCFRunLoopBeforeWaiting(即将产生<strong>用户态</strong>切换<strong>内核态</strong>)</li>
+<li>kCFRunLoopAfterWaiting</li>
+<li>kCFRunLoopExit<br><img src="/images/runloop4.png" alt=""><br><img src="/images/runloop5.png" alt=""></li>
+</ul>
+<p><strong>NSRunLoopCommonModes</strong></p>
+<ul>
+<li>CommmonModes不是实际存在的一种Mode</li>
+<li>是同步Source/Timer/Observer到多个Mode中的一种技术方案<br><img src="/images/runloop6.png" alt=""></li>
+</ul>
+<p><strong>RunLoop和NSTimer</strong><br>void CFRunLoopAddTimer(runloop, timer, commonMode)</p>
+<p><strong>RunLoop和多线程</strong></p>
+<ul>
+<li>线程和Runloop是一一对应的</li>
+<li>手动创建的线程默认没有Runloop</li>
+</ul>
+<p><strong>如何实现一个常驻线程</strong><br>step1: 为当前线程开启一个runloop<br>step2: 向改runloop添加一个Port/Source等维持Runloop的事件循环<br>step3: 启动该runloop<br><img src="/images/runloop7.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/07/01/Runloop/" data-id="ckr949d630001r9jbaw0s4w15" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2021-06-21T09:15:52.000Z" itemprop="datePublished">2021-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="GCD"><a href="#GCD" class="headerlink" title="GCD"></a>GCD</h3><ul>
+<li>同步/异步 和串行/并发</li>
+<li>dispatch_barrier_async</li>
+<li>dispatch_group</li>
+</ul>
+<p>同步/异步和串行/并发</p>
+<ul>
+<li>dispatch_sync(serial_queue, ^{ task })</li>
+<li>dispatch_async(serial_queue, ^{ task })</li>
+<li>dispatch_sync(concurrent_queue, ^{ task })</li>
+<li>dispatch_async(concurrent_queue, ^{ task })</li>
+</ul>
+<p>如何用GCD实现多读单写<br><img src="/images/thread.png" alt=""></p>
+<p>dispatch_group使用<br><img src="/images/thread2.png" alt=""></p>
+<h3 id="NSOperation"><a href="#NSOperation" class="headerlink" title="NSOperation"></a>NSOperation</h3><p>需要和NSOperationQueue配合实现多线程方案</p>
+<ul>
+<li>添加任务依赖</li>
+<li>任务执行状态控制</li>
+<li>最大并发量</li>
+</ul>
+<p>任务执行状态控制</p>
+<ul>
+<li>isReady</li>
+<li>isExcuting</li>
+<li>isFinished</li>
+<li>isCancelled</li>
+</ul>
+<p>状态控制</p>
+<ul>
+<li>如果只重写main方法， 底层控制变更任务执行完成状态，以及任务退出</li>
+<li>如果重写了start方法， 自行控制任务状态</li>
+</ul>
+<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>iOS当中都有哪些锁</p>
+<ul>
+<li>@synchronized(一般创建单例对象时候使用)</li>
+<li>atomic（属性关键子）</li>
+<li>OSSpinLock （循环等待询问，不释放当前资源， 用于轻量级数据方法）</li>
+<li>NSRecursiveLock</li>
+<li>NSLock</li>
+<li>dispatch_semphore_t(create/wait/signal)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/06/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckr7yl0ic000166jb2ckh3wlf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-内存管理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/06/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="article-date">
+  <time datetime="2021-06-08T15:15:44.000Z" itemprop="datePublished">2021-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="内存布局结构"><a href="#内存布局结构" class="headerlink" title="内存布局结构"></a>内存布局结构</h3><p><img src="/images/memo.png" alt=""></p>
+<h3 id="iOS内存管理方案（objc-runtime-680）"><a href="#iOS内存管理方案（objc-runtime-680）" class="headerlink" title="iOS内存管理方案（objc-runtime-680）"></a>iOS内存管理方案（objc-runtime-680）</h3><ul>
+<li>TaggedPointer</li>
+<li>NONPOINTER_ISA<br><img src="/images/memo1.png" alt=""><br><img src="/images/memo2.png" alt=""></li>
+<li>散列表<br><img src="/images/memo3.png" alt=""><br><img src="/images/memo4.png" alt=""><br><img src="/images/memo5.png" alt=""></li>
+</ul>
+<h3 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h3><ul>
+<li>ARC是LLVM和Runtime协作的结果</li>
+<li>ARC中禁止手动调用retain/release/retainCount/delloc</li>
+<li>ARC中新增weak,strong关键字</li>
+</ul>
+<h3 id="引用计数管理"><a href="#引用计数管理" class="headerlink" title="引用计数管理"></a>引用计数管理</h3><p><img src="/images/memo6.png" alt=""><br><img src="/images/memo7.png" alt=""><br><img src="/images/memo8.png" alt=""><br>delloc实现：<br><img src="/images/memo9.png" alt=""><br><img src="/images/memo10.png" alt=""></p>
+<p>obj_destructInstance()实现：<br><img src="/images/memo11.png" alt=""></p>
+<p>clearDeallocating()实现：<br><img src="/images/memo12.png" alt=""></p>
+<h3 id="自动释放池（AutoReleasePool）"><a href="#自动释放池（AutoReleasePool）" class="headerlink" title="自动释放池（AutoReleasePool）"></a>自动释放池（AutoReleasePool）</h3><ul>
+<li>以栈为结点通过双线链表的形式组合而成</li>
+<li>与线程一一对应</li>
+<li>在当次runloop将要结束的时候调用 AutoReleasePoolPage::Pop</li>
+<li>多层嵌套就是多次插入哨兵对象<br><img src="/images/memo13.png" alt=""><br><img src="/images/memo14.png" alt=""><br><img src="/images/memo15.png" alt=""><br><img src="/images/memo16.png" alt=""></li>
+</ul>
+<p>AutoReleasePoolPage::Pop</p>
+<ul>
+<li>根据传入的哨兵对象找到对应位置</li>
+<li>给上次Push操作之后添加的对象依次发送release消息</li>
+<li>回到next指针到正确位置</li>
+</ul>
+<h3 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h3><ul>
+<li>自循环引用</li>
+<li>相互循环引用</li>
+<li>多循环引用</li>
+</ul>
+<p>如何破除循环引用</p>
+<ul>
+<li>避免产生循环引用</li>
+<li>在合适时机手动打破循环引用</li>
+</ul>
+<p>具体解决方案</p>
+<ul>
+<li>__weak</li>
+<li>__block</li>
+<li>__unsafe_unretained（会产生悬垂指针）</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>MRC下，__block修饰对象不会增加引用计数，避免了循环引用</li>
+<li>ARC下，__block修饰对象被强引用，无法避免循环引用，需要手动解环</li>
+</ul>
+<p>NSTimer循环引用问题<br><img src="/images/memo17.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/06/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" data-id="ckr7yl0it000866jbgr3ibevy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Block" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/20/Block/" class="article-date">
+  <time datetime="2021-05-20T08:12:43.000Z" itemprop="datePublished">2021-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/20/Block/">Block</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是block"><a href="#什么是block" class="headerlink" title="什么是block"></a>什么是block</h3><ul>
+<li>block是将函数及其执行上下文封装起来的对象</li>
+</ul>
+<h3 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h3><ul>
+<li>可以使用 ‘clang -rewrite-objc file.m’ 查看编译之后的文件内容</li>
+</ul>
+<h3 id="block截获变量特性"><a href="#block截获变量特性" class="headerlink" title="block截获变量特性"></a>block截获变量特性</h3><ul>
+<li>局部变量：对于基本数据类型截获其值，对于对象类型连同<strong>所有权修饰符（strong/weak/_unsafe_unretained）</strong> 一起截获</li>
+<li>静态局部变量：以指针形式截获</li>
+<li>全局变量： 不截获</li>
+<li>静态全局变量： 不截获</li>
+</ul>
+<h3 id="block修饰符"><a href="#block修饰符" class="headerlink" title="__block修饰符"></a>__block修饰符</h3><ul>
+<li>一般情况下， 对被截获变量进行赋值操作需要添加<strong>__block修饰符</strong></li>
+<li>静态局部变量, 全局变量, 静态全局变量不需要<strong>__block修饰符</strong></li>
+</ul>
+<h3 id="block的内存管理"><a href="#block的内存管理" class="headerlink" title="block的内存管理"></a>block的内存管理</h3><p><img src="/images/block.png" alt=""><br><img src="/images/block2.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/05/20/Block/" data-id="ckr7yl0ig000566jbgudh9v6i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Objc" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/05/06/Objc/" class="article-date">
+  <time datetime="2021-05-06T07:09:55.000Z" itemprop="datePublished">2021-05-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/06/Objc/">Objc</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分类（category）"><a href="#分类（category）" class="headerlink" title="分类（category）"></a>分类（category）</h3><p><img src="/images/category.png" alt=""><br>分类能够干啥：</p>
+<ul>
+<li>声明私有方法</li>
+<li>分解体积庞大的类文件</li>
+<li>拓展Framework的方法</li>
+</ul>
+<p>分类中可以添加哪些内容？</p>
+<ul>
+<li>实例方法</li>
+<li>类方法</li>
+<li>协议</li>
+<li>属性（get set方法， 非实例变量）</li>
+<li>关联对象（伪成员变量）<br><img src="/images/category2.png" alt=""><br><img src="/images/category3.png" alt=""></li>
+</ul>
+<p>特点：</p>
+<ul>
+<li>运行时决议</li>
+<li>分类方法会覆盖原类方法</li>
+<li>同名分类方法谁能生效取决于编译顺序</li>
+<li>名字相同的分类会引起编译报错</li>
+</ul>
+<h3 id="扩展（extension）"><a href="#扩展（extension）" class="headerlink" title="扩展（extension）"></a>扩展（extension）</h3><p>特点</p>
+<ul>
+<li>编译时决议</li>
+<li>只以声明的形式存在， 多数情况寄生于宿主类的.m中</li>
+<li>不能为系统类添加扩展</li>
+</ul>
+<h3 id="代理-（delegate）"><a href="#代理-（delegate）" class="headerlink" title="代理 （delegate）"></a>代理 （delegate）</h3><ul>
+<li>一种软件设计模式</li>
+<li>iOS中以@protocol形式体现</li>
+<li>一对一</li>
+<li>一般声明为weak以规避循环引用</li>
+</ul>
+<h3 id="通知-（Notification）"><a href="#通知-（Notification）" class="headerlink" title="通知 （Notification）"></a>通知 （Notification）</h3><ul>
+<li>使用观察者模式来实现的用于跨层传递消息的机制</li>
+<li>传递方式一对多</li>
+</ul>
+<h3 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h3><ul>
+<li>是观察者设计模式的又一实现</li>
+<li>Apple使用了isa混写（isa-swizzling）来实现KVO</li>
+<li>使用setter方法改变值KVO才会生效</li>
+<li>使用setValue:forKey:改变值KVO才会生效</li>
+<li>成员变量直接修改需要手动添加KVO（基于KVC）才会生效<br><img src="/images/kvo.png" alt=""></li>
+</ul>
+<h3 id="KVO-1"><a href="#KVO-1" class="headerlink" title="KVO"></a>KVO</h3><ul>
+<li>get<br><img src="/images/kvc.png" alt=""></li>
+<li>set<br><img src="/images/kvc2.png" alt=""></li>
+</ul>
+<h3 id="属性关键字"><a href="#属性关键字" class="headerlink" title="属性关键字"></a>属性关键字</h3><p>读写权限</p>
+<ul>
+<li>readonly</li>
+<li>readwrite</li>
+</ul>
+<p>原子性</p>
+<ul>
+<li>atomic</li>
+<li>nonatomic</li>
+</ul>
+<p>引用计数</p>
+<ul>
+<li>retain/strong</li>
+<li>assign/unsafe_unretained</li>
+<li>weak</li>
+<li>copy</li>
+</ul>
+<p>assign特性</p>
+<ul>
+<li>修饰基本数据类型</li>
+<li>修饰对象类型时， 不改变引用计数</li>
+<li>会产生悬垂指针</li>
+</ul>
+<p>weak特性</p>
+<ul>
+<li>不改变修饰对象的引用计数</li>
+<li>所指对象被释放后会自动置为nil</li>
+</ul>
+<p>copy特性<br>浅拷贝： 引用计数+1<br>深拷贝： 开辟了新的内存空间<br><img src="/images/copy.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/05/06/Objc/" data-id="ckr7yl0ie000366jbdihpazpz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-一些git常用命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/28/%E4%B8%80%E4%BA%9Bgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
@@ -193,10 +779,10 @@
 
 
   
-    <article id="post-一些iOS常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-UI" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time datetime="2020-12-19T03:39:52.000Z" itemprop="datePublished">2020-12-19</time>
+    <a href="/2021/03/12/UI/" class="article-date">
+  <time datetime="2021-03-11T17:12:25.000Z" itemprop="datePublished">2021-03-12</time>
 </a>
     
   </div>
@@ -207,7 +793,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">一些iOS常用命令</a>
+      <a class="article-title" href="/2021/03/12/UI/">UI</a>
     </h1>
   
 
@@ -215,421 +801,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="显示Mach-O文件中的entitlement"><a href="#显示Mach-O文件中的entitlement" class="headerlink" title="显示Mach-O文件中的entitlement"></a>显示Mach-O文件中的entitlement</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -d --entitlement :- &#123;mach-O path&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="查看当前安装的证书"><a href="#查看当前安装的证书" class="headerlink" title="查看当前安装的证书"></a>查看当前安装的证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security find-identity -v -p codesigning</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看权限文件"><a href="#查看权限文件" class="headerlink" title="查看权限文件"></a>查看权限文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security cms -D -i xxx.app/embedded.mobileprovision</span><br></pre></td></tr></table></figure>
-
-<h3 id="制作plist文件"><a href="#制作plist文件" class="headerlink" title="制作plist文件"></a>制作plist文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ security cms -D -i embedded.mobileprovision &gt; profile.plist</span><br></pre></td></tr></table></figure>
-
-<h3 id="获取描述文件中的某一字段"><a href="#获取描述文件中的某一字段" class="headerlink" title="获取描述文件中的某一字段"></a>获取描述文件中的某一字段</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/libexec/PlistBuddy -x -c <span class="string">'Print:Entitlements'</span>  profile.plist &gt; Entitlements.plist</span><br></pre></td></tr></table></figure>
-
-<h3 id="强制替换签名"><a href="#强制替换签名" class="headerlink" title="强制替换签名"></a>强制替换签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict &#123;xxx.app｜Framework path&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="使用Entitlements-plist对xxx-app签名"><a href="#使用Entitlements-plist对xxx-app签名" class="headerlink" title="使用Entitlements.plist对xxx.app签名"></a>使用Entitlements.plist对xxx.app签名</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -fs <span class="string">"iPhone Developer: DevNameXXX (XXXX)"</span> --no-strict --entitlements=Entitlements.plist &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="检测xxx-app签名是否合法"><a href="#检测xxx-app签名是否合法" class="headerlink" title="检测xxx.app签名是否合法"></a>检测xxx.app签名是否合法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="将信息重新保存到xxx-txt"><a href="#将信息重新保存到xxx-txt" class="headerlink" title="将信息重新保存到xxx.txt"></a>将信息重新保存到xxx.txt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ otool -l xxx.app/xxx &gt; xxx.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="检测xxx-app签名是否合法-1"><a href="#检测xxx-app签名是否合法-1" class="headerlink" title="检测xxx.app签名是否合法"></a>检测xxx.app签名是否合法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ codesign -v &#123;xxx.app path&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="筛选出可执行文件的加密情况"><a href="#筛选出可执行文件的加密情况" class="headerlink" title="筛选出可执行文件的加密情况"></a>筛选出可执行文件的加密情况</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ otool -l xxx.app/xxx | grep cry</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckmhupdx6000n5njb256nadoj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LeetCodeContest175" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/09/LeetCodeContest175/" class="article-date">
-  <time datetime="2020-02-09T12:53:51.000Z" itemprop="datePublished">2020-02-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/09/LeetCodeContest175/">175场周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="5335-参加考试的最大学生数"><a href="#5335-参加考试的最大学生数" class="headerlink" title="5335. 参加考试的最大学生数"></a>5335. 参加考试的最大学生数</h2><p>给你一个 m * n 的矩阵 seats 表示教室中的座位分布。如果座位是坏的（不可用），就用 ‘#’ 表示；否则，用 ‘.’ 表示。</p>
-<p>学生可以看到左侧、右侧、左上、右上这四个方向上紧邻他的学生的答卷，但是看不到直接坐在他前面或者后面的学生的答卷。请你计算并返回该考场可以容纳的一起参加考试且无法作弊的最大学生人数。</p>
-<p>学生必须坐在状况良好的座位上。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/LC_175.png" alt=""></p>
-<p><code>输入</code>：seats =<br>[[“#”,”.”,”#”,”#”,”.”,”#”],<br> [“.”,”#”,”#”,”#”,”#”,”.”],<br> [“#”,”.”,”#”,”#”,”.”,”#”]]</p>
-<p><code>输出</code>：4<br><code>解释</code>：教师可以让 4 个学生坐在可用的座位上，这样他们就无法在考试中作弊。</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><code>输入</code>：seats =<br> [[“.”,”#”],<br>  [“#”,”#”],<br>  [“#”,”.”],<br>  [“#”,”#”],<br>  [“.”,”#”]]</p>
-<p><code>输出</code>：3<br><code>解释</code>：让所有学生坐在可用的座位上。</p>
-<h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5><p><code>输入</code>：seats =<br>[[“#”,”.”,”.”,”.”,”#”],<br> [“.”,”#”,”.”,”#”,”.”],<br> [“.”,”.”,”#”,”.”,”.”],<br> [“.”,”#”,”.”,”#”,”.”],<br> [“#”,”.”,”.”,”.”,”#”]]</p>
-<p><code>输出</code>：10<br><code>解释</code>：让学生坐在第 1、3 和 5 列的可用座位上。</p>
-<p><code>提示</code>：</p>
+        <h3 id="UIView-和-CALayer的关系"><a href="#UIView-和-CALayer的关系" class="headerlink" title="UIView 和 CALayer的关系"></a>UIView 和 CALayer的关系</h3><ul>
+<li>UIView是CALayer代理，参与响应链，处理触摸等事件，</li>
+<li>CALayer负责显示内容</li>
+</ul>
+<h3 id="事件传递"><a href="#事件传递" class="headerlink" title="事件传递"></a>事件传递</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hitTest</span><span class="params">(<span class="number">_</span> point: CGPoint, with event: UIEvent?)</span></span> -&gt; <span class="type">UIView?</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">point</span><span class="params">(inside point: CGPoint, with event: UIEvent?)</span></span> -&gt; <span class="type">Bool</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/eventdispatch.png" alt=""><br><img src="/images/eventflow.png" alt=""></p>
+<h3 id="事件响应"><a href="#事件响应" class="headerlink" title="事件响应"></a>事件响应</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">touchesMoved</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">touchesEnded</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">touchesCancelled</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span></span><br><span class="line"><span class="type">SubView</span> -&gt; <span class="type">SuperView</span> -&gt; <span class="type">ViewController</span> -&gt; <span class="type">Window</span> -&gt; <span class="type">AppDelegate</span></span><br></pre></td></tr></table></figure>
+<h3 id="图像显示原理"><a href="#图像显示原理" class="headerlink" title="图像显示原理"></a>图像显示原理</h3><p><img src="/images/screenDisplay.png" alt=""></p>
+<h3 id="CPU工作"><a href="#CPU工作" class="headerlink" title="CPU工作"></a>CPU工作</h3><ul>
+<li>Layout: UI布局, 文本计算</li>
+<li>Display: 绘制（DrawRect）</li>
+<li>Prepare: 图片编码</li>
+<li>Commit:  提交位图</li>
+</ul>
+<h3 id="GPU工作"><a href="#GPU工作" class="headerlink" title="GPU工作"></a>GPU工作</h3><p><img src="/images/gpurender.png" alt=""></p>
+<h3 id="UI卡顿掉帧原因"><a href="#UI卡顿掉帧原因" class="headerlink" title="UI卡顿掉帧原因"></a>UI卡顿掉帧原因</h3><ul>
+<li>在下一个VSYNC信号到来之前（16.7ms内），CPU和CPU未能完成一帧画面的合成</li>
+</ul>
+<h3 id="UIView绘制原理"><a href="#UIView绘制原理" class="headerlink" title="UIView绘制原理"></a>UIView绘制原理</h3><p><img src="/images/draw.png" alt=""><br><img src="/images/draw2.png" alt=""></p>
+<h3 id="异步绘制原理"><a href="#异步绘制原理" class="headerlink" title="异步绘制原理"></a>异步绘制原理</h3><p>[layer.delegate displayLayer:]</p>
 <ul>
-<li>seats 只包含字符 ‘.’ 和’#’</li>
-<li>m == seats.length</li>
-<li>n == seats[i].length</li>
-<li>1 &lt;= m &lt;= 8</li>
-<li>1 &lt;= n &lt;= 8</li>
+<li>代理负责生成对应bitmap</li>
+<li>设置该bitmap为layer的contents<br><img src="/images/asyncDraw.png" alt=""></li>
 </ul>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxStudents</span><span class="params">(<span class="number">_</span> seats: [[Character]])</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="type">R</span> = seats.<span class="built_in">count</span>, <span class="type">C</span> = seats[<span class="number">0</span>].<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">var</span> validity = [<span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="type">R</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> cur = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="type">C</span> &#123;</span><br><span class="line">            cur = <span class="number">2</span>*cur + (seats[i][j] == <span class="string">"."</span> ? <span class="number">1</span> : <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        validity.append(cur)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">oneCount</span><span class="params">(<span class="number">_</span> n: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> n = n</span><br><span class="line">        <span class="keyword">var</span> ct = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">0</span> &#123;</span><br><span class="line">            n = n &amp; (n-<span class="number">1</span>)</span><br><span class="line">            ct += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ct</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> dp = [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: -<span class="number">1</span>, <span class="built_in">count</span>: <span class="number">1</span>&lt;&lt;<span class="type">C</span>), <span class="built_in">count</span>: <span class="type">R</span>+<span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>...<span class="type">R</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> valid = validity[i-<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;(<span class="number">1</span>&lt;&lt;<span class="type">C</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (j&amp;valid == j) &amp;&amp; (j&amp;(j&gt;&gt;<span class="number">1</span>) == <span class="number">0</span>) &#123; <span class="comment">// 确保mask为j时当前行的是合法的</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">0</span>..&lt;(<span class="number">1</span>&lt;&lt;<span class="type">C</span>) <span class="keyword">where</span> dp[i-<span class="number">1</span>][k] != -<span class="number">1</span>  &#123; <span class="comment">//确保mask为k时上一行是合法的</span></span><br><span class="line">                    <span class="keyword">if</span> (j&amp;(k&gt;&gt;<span class="number">1</span>) == <span class="number">0</span>) &amp;&amp; ((j&gt;&gt;<span class="number">1</span>)&amp;k == <span class="number">0</span>) &#123;  <span class="comment">//确保当前行不与上一行冲突</span></span><br><span class="line">                        dp[i][j] = <span class="built_in">max</span>(dp[i][j], dp[i-<span class="number">1</span>][k] + oneCount(j))</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="type">R</span>].<span class="built_in">max</span>()!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/09/LeetCodeContest175/" data-id="ckmhupdwy000i5njbd38e7s2z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-BitWeeklyContest18" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/29/BitWeeklyContest18/" class="article-date">
-  <time datetime="2020-01-29T04:02:42.000Z" itemprop="datePublished">2020-01-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/29/BitWeeklyContest18/">18场双周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1330-翻转子数组得到最大的数组值"><a href="#1330-翻转子数组得到最大的数组值" class="headerlink" title="1330. 翻转子数组得到最大的数组值"></a>1330. 翻转子数组得到最大的数组值</h2><p>给你一个整数数组 nums 。「 数组值」定义为所有满足 0 &lt;= i &lt; nums.length-1 的 |nums[i]-nums[i+1]| 的和。</p>
-<p>你可以选择给定数组的任意子数组，并将该子数组翻转。但你只能执行这个操作 一次 。</p>
-<p>请你找到可行的最大 数组值 。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><code>输入</code>：nums = [2,3,1,5,4]<br><code>输出</code>：10<br><code>解释</code>：<br>通过翻转子数组 [3,1,5] ，数组变成 [2,5,1,3,4] ，数组值为 10 。</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><code>输入</code>：nums = [2,4,9,24,2,1,10]<br><code>输出</code>：68</p>
-<p><code>提示</code>：</p>
-<ul>
-<li>1 &lt;= nums.length &lt;= 3*10^4</li>
-<li>-10^5 &lt;= nums[i] &lt;= 10^5</li>
+<h3 id="离屏渲染"><a href="#离屏渲染" class="headerlink" title="离屏渲染"></a>离屏渲染</h3><ul>
+<li>On-Screen Rendering: GPU在当前用于显示的屏幕缓冲区中进行的渲染操作</li>
+<li>Off-Screen Rendering: GPU在当前用于显示的屏幕缓冲区之外新开辟缓冲区进行渲染操作<br>总结:离屏渲染开辟了新的缓冲区，涉及上下文切换，增加了GPU工作量</li>
 </ul>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxValueAfterReverse</span><span class="params">(<span class="number">_</span> nums: [Int])</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> maxi = <span class="type">Int</span>.<span class="built_in">min</span>/<span class="number">100</span>, mini = <span class="type">Int</span>.<span class="built_in">max</span>/<span class="number">100</span></span><br><span class="line">    <span class="keyword">let</span> n = nums.<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">var</span> change = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n-<span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> a = nums[i], b = nums[i+<span class="number">1</span>]</span><br><span class="line">        change = <span class="built_in">max</span>(change, <span class="built_in">abs</span>(nums[<span class="number">0</span>] - b) - <span class="built_in">abs</span>(a - b));</span><br><span class="line">        change = <span class="built_in">max</span>(change, <span class="built_in">abs</span>(nums[n - <span class="number">1</span>] - a) - <span class="built_in">abs</span>(a - b));</span><br><span class="line">        mini = <span class="built_in">min</span>(mini, <span class="built_in">max</span>(a, b));</span><br><span class="line">        maxi = <span class="built_in">max</span>(maxi, <span class="built_in">min</span>(a, b));  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> srcSum = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n-<span class="number">1</span> &#123;</span><br><span class="line">        srcSum += <span class="built_in">abs</span>(nums[i] - nums[i+<span class="number">1</span>])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  srcSum + <span class="built_in">max</span>(change, (maxi - mini) * <span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/29/BitWeeklyContest18/" data-id="ckmhupdvs00005njbgy6u1v5a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LeetCodeContest173" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/26/LeetCodeContest173/" class="article-date">
-  <time datetime="2020-01-26T06:04:59.000Z" itemprop="datePublished">2020-01-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/26/LeetCodeContest173/">173场周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="5321-阈值距离内邻居最少的城市"><a href="#5321-阈值距离内邻居最少的城市" class="headerlink" title="5321. 阈值距离内邻居最少的城市"></a>5321. 阈值距离内邻居最少的城市</h2><p>有 n 个城市，按从 0 到 n-1 编号。给你一个边数组 edges，其中 edges[i] = [fromi, toi, weighti] 代表 fromi 和 toi 两个城市之间的双向加权边，距离阈值是一个整数 distanceThreshold。</p>
-<p>返回能通过某些路径到达其他城市数目最少、且路径距离 最大 为 distanceThreshold 的城市。如果有多个这样的城市，则返回编号最大的城市。</p>
-<p>注意，连接城市 i 和 j 的路径的距离等于沿该路径的所有边的权重之和。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/find_the_city_01.png" alt=""></p>
-<p><code>输入</code>：n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4<br><code>输出</code>：3<br><code>解释</code>：城市分布图如上。<br>每个城市阈值距离 distanceThreshold = 4 内的邻居城市分别是：<br>城市 0 -&gt; [城市 1, 城市 2]<br>城市 1 -&gt; [城市 0, 城市 2, 城市 3]<br>城市 2 -&gt; [城市 0, 城市 1, 城市 3]<br>城市 3 -&gt; [城市 1, 城市 2]<br>城市 0 和 3 在阈值距离 4 以内都有 2 个邻居城市，但是我们必须返回城市 3，因为它的编号最大。</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><img src="/images/find_the_city_02.png" alt=""></p>
-<p><code>输入</code>：n = 5, edges = [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], distanceThreshold = 2<br><code>输出</code>：0<br><code>解释</code>：城市分布图如上。</p>
-<p>每个城市阈值距离 distanceThreshold = 2 内的邻居城市分别是：<br>城市 0 -&gt; [城市 1]<br>城市 1 -&gt; [城市 0, 城市 4]<br>城市 2 -&gt; [城市 3, 城市 4]<br>城市 3 -&gt; [城市 2, 城市 4]<br>城市 4 -&gt; [城市 1, 城市 2, 城市 3]<br>城市 0 在阈值距离 4 以内只有 1 个邻居城市。</p>
-<p><code>提示</code>：</p>
-<ul>
-<li>2 &lt;= n &lt;= 100</li>
-<li>1 &lt;= edges.length &lt;= n * (n - 1) / 2</li>
-<li>edges[i].length == 3</li>
-<li>0 &lt;= fromi &lt; toi &lt; n</li>
-<li>1 &lt;= weighti, distanceThreshold &lt;= 10^4</li>
-<li>所有 (fromi, toi) 都是不同的。</li>
-</ul>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findTheCity</span><span class="params">(<span class="number">_</span> n: Int, <span class="number">_</span> edges: [[Int]], <span class="number">_</span> distanceThreshold: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> dis = [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: <span class="type">Int</span>.<span class="built_in">max</span>&gt;&gt;<span class="number">2</span>, <span class="built_in">count</span>: n+<span class="number">1</span>), <span class="built_in">count</span>: n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> edges &#123;</span><br><span class="line">        dis[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = e[<span class="number">2</span>]</span><br><span class="line">        dis[e[<span class="number">1</span>]][e[<span class="number">0</span>]] = e[<span class="number">2</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        dis[i][i] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">                dis[i][j] = <span class="built_in">min</span>(dis[i][j], dis[i][k]+dis[k][j])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> mv = n+<span class="number">1</span></span><br><span class="line">    <span class="keyword">var</span> ans = -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">stride</span>(from: n-<span class="number">1</span>, to: -<span class="number">1</span>, by: -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> ct = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;n <span class="keyword">where</span> dis[i][j] &lt;= distanceThreshold &#123;</span><br><span class="line">            ct += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ct &lt; mv &#123;</span><br><span class="line">            mv = ct</span><br><span class="line">            ans = i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5322-工作计划的最低难度"><a href="#5322-工作计划的最低难度" class="headerlink" title="5322. 工作计划的最低难度"></a>5322. 工作计划的最低难度</h2><p>你需要制定一份 d 天的工作计划表。工作之间存在依赖，要想执行第 i 项工作，你必须完成全部 j 项工作（ 0 &lt;= j &lt; i）。</p>
-<p>你每天 至少 需要完成一项任务。工作计划的总难度是这 d 天每一天的难度之和，而一天的工作难度是当天应该完成工作的最大难度。</p>
-<p>给你一个整数数组 jobDifficulty 和一个整数 d，分别代表工作难度和需要计划的天数。第 i 项工作的难度是 jobDifficulty[i]。</p>
-<p>返回整个工作计划的 最小难度 。如果无法制定工作计划，则返回 -1 。</p>
-<h5 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/lc_173.png" alt=""></p>
-<p><code>输入</code>：jobDifficulty = [6,5,4,3,2,1], d = 2<br><code>输出</code>：7<br><code>解释</code>：第一天，您可以完成前 5 项工作，总难度 = 6. 第二天，您可以完成最后一项工作，总难度 = 1. 计划表的难度 = 6 + 1 = 7 </p>
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2:"></a>示例 2:</h5><p><code>输入</code>：jobDifficulty = [9,9,9], d = 4<br><code>输出</code>：-1<br><code>解释</code>：就算你每天完成一项工作，仍然有一天是空闲的，你无法制定一份能够满足既定工作时间的计划表。</p>
-<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3:"></a>示例 3:</h5><p><code>输入</code>：jobDifficulty = [7,1,7,1,7,1], d = 3<br><code>输出</code>：15</p>
-<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minDifficulty</span><span class="params">(<span class="number">_</span> jobDifficulty: [Int], <span class="number">_</span> d: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> n = jobDifficulty.<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">if</span> d &gt; n &#123; <span class="keyword">return</span> -<span class="number">1</span> &#125;</span><br><span class="line">    <span class="comment">// dp[i][j] = min diff for doing first i jobs in j days?</span></span><br><span class="line">    <span class="keyword">let</span> <span class="type">INF</span> = <span class="number">1000_000_009</span></span><br><span class="line">    <span class="keyword">var</span> dp = [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: <span class="type">INF</span>, <span class="built_in">count</span>: d+<span class="number">1</span>), <span class="built_in">count</span>: n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;n &#123;</span><br><span class="line">        <span class="keyword">var</span> diff = jobDifficulty[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">stride</span>(from: i, to: -<span class="number">1</span>, by: -<span class="number">1</span>) &#123;</span><br><span class="line">            diff = <span class="built_in">max</span>(diff, jobDifficulty[j])</span><br><span class="line">            <span class="keyword">if</span> j == <span class="number">0</span> &#123;</span><br><span class="line">                dp[i][<span class="number">1</span>] = diff</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="number">2</span>..&lt;d+<span class="number">1</span> &#123;</span><br><span class="line">                    dp[i][k] = <span class="built_in">min</span>(dp[i][k], diff+dp[j-<span class="number">1</span>][k-<span class="number">1</span>])</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n - <span class="number">1</span>][d]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/26/LeetCodeContest173/" data-id="ckmhupdwj000b5njb577yh1ea" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LeetCodeContest172" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/19/LeetCodeContest172/" class="article-date">
-  <time datetime="2020-01-19T12:57:21.000Z" itemprop="datePublished">2020-01-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/19/LeetCodeContest172/">172场周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1326-灌溉花园的最少水龙头数目"><a href="#1326-灌溉花园的最少水龙头数目" class="headerlink" title="1326. 灌溉花园的最少水龙头数目"></a>1326. 灌溉花园的最少水龙头数目</h2><p>在 x 轴上有一个一维的花园。花园长度为 n，从点 0 开始，到点 n 结束。</p>
-<p>花园里总共有 n + 1 个水龙头，分别位于 [0, 1, …, n] 。</p>
-<p>给你一个整数 n 和一个长度为 n + 1 的整数数组 ranges ，其中 ranges[i] （下标从 0 开始）表示：如果打开点 i 处的水龙头，可以灌溉的区域为 [i -  ranges[i], i + ranges[i]] 。</p>
-<p>请你返回可以灌溉整个花园的 最少水龙头数目 。如果花园始终存在无法灌溉到的地方，请你返回 -1 。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><img src="/images/1685_example_1.png" alt=""></p>
-<p><code>输入</code>：n = 5, ranges = [3,4,1,1,0,0]<br><code>输出</code>：1<br><code>解释</code>：<br>点 0 处的水龙头可以灌溉区间 [-3,3]<br>点 1 处的水龙头可以灌溉区间 [-3,5]<br>点 2 处的水龙头可以灌溉区间 [1,3]<br>点 3 处的水龙头可以灌溉区间 [2,4]<br>点 4 处的水龙头可以灌溉区间 [4,4]<br>点 5 处的水龙头可以灌溉区间 [5,5]<br>只需要打开点 1 处的水龙头即可灌溉整个花园 [0,5]。</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><code>输入</code>：n = 3, ranges = [0,0,0,0]<br><code>输出</code>：-1<br><code>解释</code>：即使打开所有水龙头，你也无法灌溉整个花园。</p>
-<h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5><p><code>输入</code>：n = 7, ranges = [1,2,1,0,2,1,0,1]<br><code>输出</code>：3</p>
-<h5 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a>示例 4：</h5><p><code>输入</code>：n = 8, ranges = [4,0,0,0,0,0,0,0,4]<br><code>输出</code>：2</p>
-<h5 id="示例-5："><a href="#示例-5：" class="headerlink" title="示例 5："></a>示例 5：</h5><p><code>输入</code>：n = 8, ranges = [4,0,0,0,4,0,0,0,4]<br><code>输出</code>：1</p>
-<p><code>提示</code>：</p>
-<ul>
-<li>1 &lt;= n &lt;= 10^4</li>
-<li>ranges.length == n + 1</li>
-<li>0 &lt;= ranges[i] &lt;= 100</li>
-</ul>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minTaps</span><span class="params">(<span class="number">_</span> n: Int, <span class="number">_</span> ranges: [Int])</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="type">INF</span> = <span class="number">1000_000_009</span></span><br><span class="line">    <span class="keyword">var</span> pairs = [(<span class="type">Int</span>, <span class="type">Int</span>)]()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ranges.<span class="built_in">indices</span> &#123;</span><br><span class="line">        pairs.append((<span class="built_in">max</span>(<span class="number">0</span>, i-ranges[i]), <span class="built_in">min</span>(n, i+ranges[i])))</span><br><span class="line">    &#125;</span><br><span class="line">    pairs = pairs.sorted &#123; $<span class="number">0.1</span> &lt; $<span class="number">1.1</span> &#125;</span><br><span class="line">    <span class="keyword">var</span> dp = [<span class="type">Int</span>](repeating: <span class="type">INF</span>, <span class="built_in">count</span>: n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">var</span> best = <span class="type">INF</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">stride</span>(from: n, to: -<span class="number">1</span>, by: -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> pairs[i].<span class="number">1</span> &gt;= n &#123;</span><br><span class="line">            dp[i] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i+<span class="number">1</span>..&lt;n+<span class="number">1</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> pairs[i].<span class="number">1</span> &gt;= pairs[j].<span class="number">0</span> &#123;</span><br><span class="line">                dp[i] = <span class="built_in">min</span>(dp[i], dp[j]+<span class="number">1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> pairs[i].<span class="number">0</span> &lt;= <span class="number">0</span> &#123;</span><br><span class="line">            best = <span class="built_in">min</span>(best, dp[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> best == <span class="type">INF</span> ? -<span class="number">1</span> : best</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/19/LeetCodeContest172/" data-id="ckmhupdwe00095njbczrmfl13" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LeetCodeContest171" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/12/LeetCodeContest171/" class="article-date">
-  <time datetime="2020-01-12T06:35:07.000Z" itemprop="datePublished">2020-01-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/LeetCodeContest171/">171场周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="5310-二指输入的的最小距离"><a href="#5310-二指输入的的最小距离" class="headerlink" title="5310. 二指输入的的最小距离"></a>5310. 二指输入的的最小距离</h2><p><img src="/images/leetcode_keyboard.png" alt=""></p>
-<p>二指输入法定制键盘在 XY 平面上的布局如上图所示，其中每个大写英文字母都位于某个坐标处，例如字母 A 位于坐标 (0,0)，字母 B 位于坐标 (0,1)，字母 P 位于坐标 (2,3) 且字母 Z 位于坐标 (4,1)。</p>
-<p>给你一个待输入字符串 word，请你计算并返回在仅使用两根手指的情况下，键入该字符串需要的最小移动总距离。坐标 (x1,y1) 和 (x2,y2) 之间的距离是 |x1 - x2| + |y1 - y2|。 </p>
-<p>注意，两根手指的起始位置是零代价的，不计入移动总距离。你的两根手指的起始位置也不必从首字母或者前两个字母开始。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p><code>输入</code>：word = “CAKE”<br><code>输出</code>：3<br><code>解释</code>：<br>使用两根手指输入 “CAKE” 的最佳方案之一是：<br>手指 1 在字母 ‘C’ 上 -&gt; 移动距离 = 0<br>手指 1 在字母 ‘A’ 上 -&gt; 移动距离 = 从字母 ‘C’ 到字母 ‘A’ 的距离 = 2<br>手指 2 在字母 ‘K’ 上 -&gt; 移动距离 = 0<br>手指 2 在字母 ‘E’ 上 -&gt; 移动距离 = 从字母 ‘K’ 到字母 ‘E’ 的距离  = 1<br>总距离 = 3</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p><code>输入</code>：word = “HAPPY”<br><code>输出</code>：6<br><code>解释</code>：<br>使用两根手指输入 “HAPPY” 的最佳方案之一是：<br>手指 1 在字母 ‘H’ 上 -&gt; 移动距离 = 0<br>手指 1 在字母 ‘A’ 上 -&gt; 移动距离 = 从字母 ‘H’ 到字母 ‘A’ 的距离 = 2<br>手指 2 在字母 ‘P’ 上 -&gt; 移动距离 = 0<br>手指 2 在字母 ‘P’ 上 -&gt; 移动距离 = 从字母 ‘P’ 到字母 ‘P’ 的距离 = 0<br>手指 1 在字母 ‘Y’ 上 -&gt; 移动距离 = 从字母 ‘A’ 到字母 ‘Y’ 的距离 = 4<br>总距离 = 6</p>
-<h5 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a>示例 3：</h5><p><code>输入</code>：word = “HAPPY”<br><code>输出</code>：7</p>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">minimumDistance</span><span class="params">(<span class="number">_</span> word: String)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> chars = <span class="type">Array</span>(word)</span><br><span class="line">    <span class="keyword">let</span> table = <span class="type">Array</span>(<span class="string">"abcdefghijklmnopqrstuvwxyz"</span>.uppercased())</span><br><span class="line">    <span class="keyword">var</span> charDic = [<span class="type">Character</span>: <span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> table.<span class="built_in">indices</span> &#123;</span><br><span class="line">        charDic[table[i]] = i</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> dp = [[[<span class="type">Int</span>]]](repeating: [[<span class="type">Int</span>]](repeating: [<span class="type">Int</span>](repeating: <span class="number">0</span>, <span class="built_in">count</span>: <span class="number">301</span>), <span class="built_in">count</span>: <span class="number">27</span>), <span class="built_in">count</span>: <span class="number">27</span>)</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">cost</span><span class="params">(<span class="number">_</span> from: Int, <span class="number">_</span> to: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> from == <span class="number">26</span> &#123; <span class="keyword">return</span> <span class="number">0</span> &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">abs</span>(from/<span class="number">6</span> - to/<span class="number">6</span>) + <span class="built_in">abs</span>(from%<span class="number">6</span> - to%<span class="number">6</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">distance</span><span class="params">(<span class="number">_</span> pos: Int, <span class="number">_</span> <span class="keyword">left</span>: Int, <span class="number">_</span> <span class="keyword">right</span>: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> pos &gt;= word.<span class="built_in">count</span> &#123; <span class="keyword">return</span> <span class="number">0</span> &#125;</span><br><span class="line">        <span class="keyword">if</span> dp[<span class="keyword">left</span>][<span class="keyword">right</span>][pos] == <span class="number">0</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> to = charDic[chars[pos]]!</span><br><span class="line">            dp[<span class="keyword">left</span>][<span class="keyword">right</span>][pos] = <span class="built_in">min</span>(cost(<span class="keyword">left</span>, to) + <span class="built_in">distance</span>(pos + <span class="number">1</span>, to, <span class="keyword">right</span>),</span><br><span class="line">                                       cost(<span class="keyword">right</span>, to) + <span class="built_in">distance</span>(pos + <span class="number">1</span>, <span class="keyword">left</span>, to))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="keyword">left</span>][<span class="keyword">right</span>][pos]</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">distance</span>(<span class="number">0</span>, <span class="number">26</span>, <span class="number">26</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/LeetCodeContest171/" data-id="ckmhupdwb00065njbf8qjd8om" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LeetCodeContest170" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/05/LeetCodeContest170/" class="article-date">
-  <time datetime="2020-01-05T05:17:12.000Z" itemprop="datePublished">2020-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/05/LeetCodeContest170/">170场周赛</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="5304-子数组异或查询"><a href="#5304-子数组异或查询" class="headerlink" title="5304. 子数组异或查询"></a>5304. 子数组异或查询</h2><p>有一个正整数数组 arr，现给你一个对应的查询数组 queries，其中 queries[i] = [Li, Ri]。</p>
-<p>对于每个查询 i，请你计算从 Li 到 Ri 的 XOR 值（即 arr[Li] xor arr[Li+1] xor … xor arr[Ri]）作为本次查询的结果。</p>
-<p>并返回一个包含给定查询 queries 所有结果的数组。</p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h5><p>输入：arr = [1,3,4,8], queries = [[0,1],[1,2],[0,3],[3,3]]<br>输出：[2,7,14,8]<br>解释：<br>数组中元素的二进制表示形式是：<br>1 = 0001<br>3 = 0011<br>4 = 0100<br>8 = 1000<br>查询的 XOR 值为：<br>[0,1] = 1 xor 3 = 2<br>[1,2] = 3 xor 4 = 7<br>[0,3] = 1 xor 3 xor 4 xor 8 = 14<br>[3,3] = 8</p>
-<h5 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a>示例 2：</h5><p>输入：arr = [4,8,2,10], queries = [[2,3],[1,3],[0,0],[0,3]]<br>输出：[8,0,4,4]</p>
-<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">xorQueries</span><span class="params">(<span class="number">_</span> arr: [Int], <span class="number">_</span> queries: [[Int]])</span></span> -&gt; [<span class="type">Int</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> preXor = [<span class="type">Int</span>](repeating: <span class="number">0</span>, <span class="built_in">count</span>: arr.<span class="built_in">count</span>+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;arr.<span class="built_in">count</span> &#123;</span><br><span class="line">        preXor[i+<span class="number">1</span>] = arr[i] ^ preXor[i]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> ans = [<span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> q <span class="keyword">in</span> queries &#123;</span><br><span class="line">        <span class="keyword">let</span> l = q[<span class="number">0</span>], r = q[<span class="number">1</span>]+<span class="number">1</span></span><br><span class="line">        ans.append(preXor[l]^preXor[r])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="5305-获取你好友已观看的视频"><a href="#5305-获取你好友已观看的视频" class="headerlink" title="5305. 获取你好友已观看的视频"></a>5305. 获取你好友已观看的视频</h2><p>有 n 个人，每个人都有一个  0 到 n-1 的唯一 id 。</p>
-<p>给你数组 watchedVideos  和 friends ，其中 watchedVideos[i]  和 friends[i] 分别表示 id = i 的人观看过的视频列表和他的好友列表。</p>
-<p>Level 1 的视频包含所有你好友观看过的视频，level 2 的视频包含所有你好友的好友观看过的视频，以此类推。一般的，Level 为 k 的视频包含所有从你出发，最短距离为 k 的好友观看过的视频。</p>
-<p>给定你的 id  和一个 level 值，请你找出所有指定 level 的视频，并将它们按观看频率升序返回。如果有频率相同的视频，请将它们按名字字典序从小到大排列。</p>
-<h5 id="示例-1-1"><a href="#示例-1-1" class="headerlink" title="示例 1"></a>示例 1</h5><p>输入：watchedVideos = [[“A”,”B”],[“C”],[“B”,”C”],[“D”]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 1<br>输出：[“B”,”C”]<br>解释：<br>你的 id 为 0 ，你的朋友包括：<br>id 为 1 -&gt; watchedVideos = [“C”]<br>id 为 2 -&gt; watchedVideos = [“B”,”C”]<br>你朋友观看过视频的频率为：<br>B -&gt; 1<br>C -&gt; 2</p>
-<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h5><p>输入：watchedVideos = [[“A”,”B”],[“C”],[“B”,”C”],[“D”]], friends = [[1,2],[0,3],[0,3],[1,2]], id = 0, level = 2<br>输出：[“D”]<br>解释：<br>你的 id 为 0 ，你朋友的朋友只有一个人，他的 id 为 3 。</p>
-<ul>
-<li>提示：<ul>
-<li>n == watchedVideos.length == friends.length</li>
-<li>2 &lt;= n &lt;= 100</li>
-<li>1 &lt;= watchedVideos[i].length &lt;= 100</li>
-<li>1 &lt;= watchedVideos[i][j].length &lt;= 8</li>
-<li>0 &lt;= friends[i].length &lt; n</li>
-<li>0 &lt;= friends[i][j] &lt; n</li>
-<li>0 &lt;= id &lt; n</li>
-<li>1 &lt;= level &lt; n</li>
-<li>如果 friends[i] 包含 j ，那么 friends[j] 包含 i</li>
-</ul>
-</li>
-</ul>
-<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">watchedVideosByFriends</span><span class="params">(<span class="number">_</span> watchedVideos: [[String]], <span class="number">_</span> friends: [[Int]], <span class="number">_</span> id: Int, <span class="number">_</span> level: Int)</span></span> -&gt; [<span class="type">String</span>] &#123;</span><br><span class="line">    <span class="keyword">var</span> seen = <span class="type">Set</span>&lt;<span class="type">Int</span>&gt;([id])</span><br><span class="line">    <span class="keyword">var</span> queue = [(id, <span class="number">0</span>)]</span><br><span class="line">    <span class="keyword">var</span> dstFriends = <span class="type">Set</span>&lt;<span class="type">Int</span>&gt;()</span><br><span class="line">    <span class="keyword">while</span> !queue.isEmpty &#123;</span><br><span class="line">        <span class="keyword">let</span> (node, d) = queue.removeFirst()</span><br><span class="line">        <span class="keyword">if</span> d &gt; level &#123; <span class="keyword">break</span> &#125;</span><br><span class="line">        <span class="keyword">if</span> d == level &#123;dstFriends.insert(node) &#125;</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> friends[node] <span class="keyword">where</span> !seen.<span class="built_in">contains</span>(nei) &#123;</span><br><span class="line">            seen.insert(nei)</span><br><span class="line">            queue.append((nei, d+<span class="number">1</span>))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> dic = [<span class="type">String</span>: <span class="type">Int</span>]()</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> dstFriends &#123;</span><br><span class="line">        <span class="keyword">for</span> video <span class="keyword">in</span> watchedVideos[node] &#123;</span><br><span class="line">            dic[video, <span class="keyword">default</span>: <span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> videos = <span class="type">Array</span>(dic.keys)</span><br><span class="line">    <span class="keyword">return</span> videos.sorted &#123;</span><br><span class="line">        <span class="keyword">if</span> dic[$<span class="number">0</span>]! == dic[$<span class="number">1</span>]! &#123;</span><br><span class="line">            <span class="keyword">return</span> $<span class="number">0</span> &lt; $<span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dic[$<span class="number">0</span>]! &lt; dic[$<span class="number">1</span>]!</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/05/LeetCodeContest170/" data-id="ckmhupdwa00055njb5s9r730c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/" rel="tag">swift</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AppleSign" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/29/AppleSign/" class="article-date">
-  <time datetime="2019-12-29T09:26:54.165Z" itemprop="datePublished">2019-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/AppleSign/">苹果双向签名原理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="代码签名"><a href="#代码签名" class="headerlink" title="代码签名"></a>代码签名</h3><ul>
-<li>代码签名是对可执行文件或脚本进行数字签名，用来确认软件在签名后未被修改或损坏的措施。和数字签名原理一样，只不过签名的数据是代码而已。</li>
-</ul>
-<h3 id="双层代码签名"><a href="#双层代码签名" class="headerlink" title="双层代码签名"></a>双层代码签名</h3><ul>
-<li>在Mac系统中用非对称加密算法生成公钥M,私钥M</li>
-<li>苹果自己有固定的一对公私钥，私钥在苹果后台，公钥在没个iOS系统中，这里称为公钥A,私钥A</li>
-<li>把公钥M以及一些开发者信息传到苹果后台(这个就是CSR文件)，用苹果后台的私钥A去签名公钥M，得到一份数据包含了公钥M以及其签名，把这份数据称为证书。</li>
-</ul>
-<h3 id="描述文件"><a href="#描述文件" class="headerlink" title="描述文件"></a>描述文件</h3><ul>
-<li>描述文件（Provisioning profile）一般包括三样东西：证书、App ID、设备。当我们真机运行或打包一个项目的时候，证书用来证明我们的程序的安全性和合法性<br><img src="ios_sign.png" alt=""></li>
+<h3 id="离屏渲染何时会触发"><a href="#离屏渲染何时会触发" class="headerlink" title="离屏渲染何时会触发"></a>离屏渲染何时会触发</h3><ul>
+<li>圆角（同时设置maskToBounds）</li>
+<li>图层蒙版</li>
+<li>阴影</li>
+<li>光栅化</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/29/AppleSign/" data-id="ckmhupdwd00085njb8umo930j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/03/12/UI/" data-id="ckr7yl0i7000066jbfgo69mbq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/" rel="tag">iOS</a></li></ul>
@@ -645,7 +855,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -659,7 +869,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https/" rel="tag">https</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/" rel="tag">iOS</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/" rel="tag">swift</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -669,7 +879,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iOS/" style="font-size: 15px;">iOS</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/swift/" style="font-size: 20px;">swift</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a>
+      <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/swift/" style="font-size: 16.67px;">swift</a> <a href="/tags/tools/" style="font-size: 13.33px;">tools</a>
     </div>
   </div>
 
@@ -678,7 +888,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -691,23 +901,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/28/%E4%B8%80%E4%BA%9Bgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">一些git常用命令</a>
+            <a href="/2021/07/17/Runtime/">Runtime</a>
           </li>
         
           <li>
-            <a href="/2021/03/18/ffmpeg%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">ffmpeg常用命令</a>
+            <a href="/2021/07/08/Network/">Network</a>
           </li>
         
           <li>
-            <a href="/2020/12/19/%E4%B8%80%E4%BA%9BiOS%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">一些iOS常用命令</a>
+            <a href="/2021/07/01/Runloop/">Runloop</a>
           </li>
         
           <li>
-            <a href="/2020/02/09/LeetCodeContest175/">175场周赛</a>
+            <a href="/2021/06/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
           </li>
         
           <li>
-            <a href="/2020/01/29/BitWeeklyContest18/">18场双周赛</a>
+            <a href="/2021/06/08/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">内存管理</a>
           </li>
         
       </ul>
